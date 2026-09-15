@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travect. — Your Next Great Escape Starts Here</title>
+    <meta name="description" content="Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit." />
+    <meta property="og:title" content="Travect. — Your Next Great Escape Starts Here" />
+    <meta property="og:description" content="Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Libertinus Sans for main headings, Montserrat for body/UI, Playfair Display for brand serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome Free v6/v7 icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- AnimateOnScroll (AOS) v2.3.1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css"
+    />
+
+    <!-- Application Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased selection:bg-purple-100 selection:text-purple-900">
+    <!-- Outer container: min-h-screen, bg-gray-50 -->
+    <div id="outer-container" class="min-h-screen bg-gray-50 flex flex-col">
+      <!-- Top accent line matching the design screenshot -->
+      <div
+        id="top-accent-bar"
+        class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 z-50 pointer-events-none"
+      ></div>
+
+      <!-- Hero section: relative, h-screen, overflow-hidden -->
+      <section id="hero-section" class="relative h-screen overflow-hidden">
+        <!-- Content wrapper: relative, h-full, flex flex-col -->
+        <div id="content-wrapper" class="relative h-full flex flex-col">
+          <!-- Navigation Bar: Max width 7xl, centered with px-8 py-6 -->
+          <header id="header-nav" class="w-full shrink-0 relative z-30">
+            <nav class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+              <!-- Brand Logo: "Travect." with the logo typography provided -->
+              <div class="flex items-center">
+                <a
+                  href="#beranda"
+                  id="brand-logo"
+                  class="inline-flex items-baseline select-none focus:outline-hidden group"
+                  aria-label="Travect Home"
+                >
+                  <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-2xl group-hover:opacity-90 transition-colors">
+                    Travect
+                  </span>
+                  <span class="font-serif-logo font-bold text-neutral-900 text-2xl">.</span>
+                </a>
+              </div>
+
+              <!-- Desktop Menu Items (hidden on mobile): Beranda, Tentang, Booking, Credits -->
+              <div
+                id="desktop-menu"
+                class="hidden md:flex items-center bg-gray-200/50 p-1 rounded-full border border-gray-200/70 shadow-2xs"
+              >
+                <button
+                  type="button"
+                  data-tab="Beranda"
+                  id="nav-item-beranda"
+                  class="nav-tab-btn px-5 py-1.5 rounded-full text-sm font-medium transition-colors bg-[#2b2b2b] text-white shadow-xs cursor-pointer focus:outline-hidden"
+                >
+                  Beranda
+                </button>
+                <button
+                  type="button"
+                  data-tab="Tentang"
+                  id="nav-item-tentang"
+                  class="nav-tab-btn px-5 py-1.5 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                >
+                  Tentang
+                </button>
+                <button
+                  type="button"
+                  data-tab="Booking"
+                  id="nav-item-booking"
+                  class="nav-tab-btn px-5 py-1.5 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                >
+                  Booking
+                </button>
+                <button
+                  type="button"
+                  data-tab="Credits"
+                  id="nav-item-credits"
+                  class="nav-tab-btn px-5 py-1.5 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                >
+                  Credits
+                </button>
+              </div>
+
+              <!-- Desktop Auth Buttons -->
+              <div id="desktop-auth-actions" class="hidden md:flex items-center space-x-3">
+                <button
+                  type="button"
+                  id="btn-masuk-desktop"
+                  class="text-sm font-medium text-gray-800 hover:text-black transition-colors px-3 py-1.5 focus:outline-hidden cursor-pointer"
+                >
+                  Masuk
+                </button>
+                <button
+                  type="button"
+                  id="btn-bergabung-desktop"
+                  class="bg-black text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer"
+                >
+                  Bergabung
+                </button>
+              </div>
+
+              <!-- Mobile Hamburger Toggle Button -->
+              <div class="flex md:hidden items-center">
+                <button
+                  type="button"
+                  id="mobile-menu-btn"
+                  class="p-2 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors focus:outline-hidden cursor-pointer"
+                  aria-label="Buka menu navigasi"
+                >
+                  <i id="menu-icon" class="fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center"></i>
+                </button>
+              </div>
+            </nav>
+
+            <!-- Mobile Menu: dropdown with white/95 opacity background, backdrop blur, rounded corners, shadow -->
+            <div id="mobile-menu" class="hidden md:hidden px-6 pt-1 pb-4">
+              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 p-5 space-y-2">
+                <div class="flex flex-col space-y-1">
+                  <button
+                    type="button"
+                    data-tab="Beranda"
+                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors bg-neutral-900 text-white cursor-pointer focus:outline-hidden"
+                  >
+                    Beranda
+                  </button>
+                  <button
+                    type="button"
+                    data-tab="Tentang"
+                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+                  >
+                    Tentang
+                  </button>
+                  <button
+                    type="button"
+                    data-tab="Booking"
+                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+                  >
+                    Booking
+                  </button>
+                  <button
+                    type="button"
+                    data-tab="Credits"
+                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+                  >
+                    Credits
+                  </button>
+                </div>
+
+                <div class="pt-3 border-t border-gray-100 flex flex-col gap-2">
+                  <button
+                    type="button"
+                    id="btn-masuk-mobile"
+                    class="w-full text-center py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer"
+                  >
+                    Masuk
+                  </button>
+                  <button
+                    type="button"
+                    id="btn-bergabung-mobile"
+                    class="w-full text-center py-2.5 text-sm font-medium bg-black text-white rounded-xl hover:bg-neutral-800 transition-colors shadow-xs cursor-pointer"
+                  >
+                    Bergabung
+                  </button>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- Main content area: flex-1, flex items-center justify-center -->
+          <main id="main-content" class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <!-- Hero Content (centered, -mt-80 to pull up) -->
+            <div
+              id="hero-content"
+              class="text-center max-w-4xl mx-auto -mt-24 sm:-mt-48 md:-mt-80 select-none"
+            >
+              <!-- Main Headings: Libertinus Sans -->
+              <h1
+                id="hero-title"
+                class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-neutral-900 leading-[1.12]"
+              >
+                <span>Your </span>
+                <span class="text-slate-400 font-bold">next </span>
+                <span>great</span>
+                <br />
+                <span class="text-slate-400 font-bold">escape </span>
+                <span>starts here</span>
+              </h1>
+
+              <!-- Subtitle: Montserrat -->
+              <p
+                id="hero-subtitle"
+                class="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed"
+              >
+                Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit
+              </p>
+            </div>
+          </main>
+        </div>
+      </section>
+
+      <!-- Interactive Auth Modal (Masuk / Bergabung) -->
+      <div
+        id="auth-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div id="auth-modal-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-xs"></div>
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 overflow-hidden z-10">
+          <button
+            type="button"
+            id="close-auth-modal"
+            class="absolute top-6 right-6 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
+            aria-label="Tutup modal"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <div class="mb-6">
+            <div class="inline-flex items-baseline select-none">
+              <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl">Travect</span>
+              <span class="font-serif-logo font-bold text-neutral-900 text-xl">.</span>
+            </div>
+            <h2 id="auth-modal-title" class="font-heading text-2xl font-bold text-gray-900 mt-3">
+              Selamat Datang Kembali
+            </h2>
+            <p id="auth-modal-description" class="text-sm text-gray-500 mt-1">
+              Masuk ke akun Travect untuk mengelola rencana perjalanan Anda
+            </p>
+          </div>
+
+          <!-- Form State -->
+          <form id="auth-form" class="space-y-4">
+            <div id="auth-name-container" class="hidden">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                Nama Lengkap
+              </label>
+              <div class="relative">
+                <i class="fa-regular fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input
+                  type="text"
+                  id="auth-name-input"
+                  placeholder="Nama Lengkap Anda"
+                  class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-hidden focus:border-black transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                Alamat Email
+              </label>
+              <div class="relative">
+                <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input
+                  type="email"
+                  id="auth-email-input"
+                  required
+                  placeholder="nama@email.com"
+                  class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-hidden focus:border-black transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1.5">
+                Kata Sandi
+              </label>
+              <div class="relative">
+                <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input
+                  type="password"
+                  id="auth-password-input"
+                  required
+                  placeholder="••••••••"
+                  class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-hidden focus:border-black transition-colors"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3 bg-black text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 mt-2 shadow-xs cursor-pointer"
+            >
+              <span id="auth-submit-btn-text">Masuk</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </form>
+
+          <!-- Success State -->
+          <div id="auth-success-state" class="hidden py-8 text-center space-y-3">
+            <div class="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <p id="auth-success-title" class="text-gray-900 font-semibold">Berhasil!</p>
+            <p class="text-xs text-gray-500">Mengarahkan ke dashboard Anda...</p>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-gray-100 text-center">
+            <p class="text-xs text-gray-500">
+              <span id="auth-switch-prompt">Belum punya akun?</span>
+              <button
+                type="button"
+                id="auth-switch-btn"
+                class="text-black font-semibold hover:underline transition-colors ml-1 cursor-pointer focus:outline-hidden"
+              >
+                Daftar sekarang
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Info Modal (Booking, Tentang, Credits) -->
+      <div
+        id="info-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div id="info-modal-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-xs"></div>
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 overflow-hidden z-10">
+          <button
+            type="button"
+            id="close-info-modal"
+            class="absolute top-6 right-6 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
+            aria-label="Tutup info"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+
+          <!-- Booking Content -->
+          <div id="info-booking-content" class="hidden">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 text-gray-900 mb-4">
+              <i class="fa-regular fa-compass text-xl"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Cari & Pesan Tiket</h3>
+            <p class="text-sm text-gray-500 mb-6">
+              Temukan penerbangan, hotel, dan paket liburan impian dengan harga terbaik.
+            </p>
+
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200">
+                <i class="fa-solid fa-location-dot text-gray-400"></i>
+                <div class="flex-1 text-left">
+                  <span class="block text-[10px] uppercase font-semibold text-gray-400">Destinasi</span>
+                  <input
+                    type="text"
+                    placeholder="Bali, Tokyo, Paris, Labuan Bajo..."
+                    class="w-full text-sm font-medium text-gray-900 focus:outline-hidden bg-transparent"
+                    value="Bali, Indonesia"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-2 p-3 rounded-xl border border-gray-200">
+                  <i class="fa-regular fa-calendar text-gray-400"></i>
+                  <div class="text-left">
+                    <span class="block text-[10px] uppercase font-semibold text-gray-400">Tanggal</span>
+                    <span class="text-xs font-medium text-gray-900">20 - 27 Okt</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 p-3 rounded-xl border border-gray-200">
+                  <i class="fa-solid fa-user-group text-gray-400"></i>
+                  <div class="text-left">
+                    <span class="block text-[10px] uppercase font-semibold text-gray-400">Tamu</span>
+                    <span class="text-xs font-medium text-gray-900">2 Dewasa</span>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="close-info-btn w-full mt-2 py-3 bg-black text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+              >
+                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                <span>Cari Destinasi Sekarang</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tentang Content -->
+          <div id="info-tentang-content" class="hidden">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 text-gray-900 mb-4">
+              <i class="fa-solid fa-circle-info text-xl"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Tentang Travect</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              Travect adalah platform kurasi perjalanan modern yang dirancang untuk mempermudah pencarian, perbandingan harga, dan pemesanan tiket liburan terbaik dalam hitungan menit.
+            </p>
+            <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100 space-y-2 text-xs text-gray-600">
+              <p>✨ <strong>Kurasi Eksklusif:</strong> Rekomendasi hotel butik dan pengalaman lokal terverifikasi.</p>
+              <p>⚡ <strong>Pemesanan Cepat:</strong> Transaksi tanpa hambatan dengan konfirmasi instan.</p>
+              <p>🛡️ <strong>Jaminan Transparan:</strong> Tanpa biaya tersembunyi dengan harga terbaik.</p>
+            </div>
+            <button
+              type="button"
+              class="close-info-btn w-full mt-6 py-2.5 bg-black text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer"
+            >
+              Kembali ke Beranda
+            </button>
+          </div>
+
+          <!-- Credits Content -->
+          <div id="info-credits-content" class="hidden">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 text-gray-900 mb-4">
+              <i class="fa-solid fa-award text-xl"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Kredit & Spesifikasi</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              Halaman hero travel booking ini dibangun sesuai dengan spesifikasi teknis dan visual Travect.
+            </p>
+            <div class="space-y-2 text-xs text-gray-600 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+              <p>• <strong>Headings:</strong> Libertinus Sans (Google Fonts)</p>
+              <p>• <strong>Body & UI:</strong> Montserrat (Google Fonts)</p>
+              <p>• <strong>Brand Serif:</strong> Playfair Display</p>
+              <p>• <strong>Stack:</strong> Pure HTML, CSS, JavaScript dengan Tailwind CSS</p>
+              <p>• <strong>Plugins:</strong> jQuery v4.0/3.7, GSAP v3.15/3.12, AnimateOnScroll (AOS), FontAwesome Free</p>
+            </div>
+            <button
+              type="button"
+              class="close-info-btn w-full mt-6 py-2.5 bg-black text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer"
+            >
+              Tutup Kredit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- External Allowed Scripts: jQuery, AOS, GSAP -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Application Script (Plain JavaScript) -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
