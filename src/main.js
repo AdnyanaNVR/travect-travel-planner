@@ -13,6 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.scrollTo(0, 0);
 
+  // Initialize Lenis Smooth Scroll
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // exponential ease-out
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
   // Bi-directional Scroll-linked Video Playback:
   // Play forward when scrolling down, play backward (rewind) when scrolling up, pause when stationary.
   const heroVideo = document.getElementById('hero-background-video');
@@ -23,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetTime = 0;
     let isSeeking = false;
     let isReady = false;
-    let rafId = null;
 
     const onMetadataLoaded = () => {
       isReady = true;
@@ -50,32 +69,53 @@ document.addEventListener('DOMContentLoaded', () => {
           document.documentElement.scrollHeight - window.innerHeight,
           1
         );
-        const scrollRatio = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-        targetTime = scrollRatio * (duration - 0.05);
 
-        // Smoothly interpolate current video time towards target time
+        // Get smooth scroll position from Lenis
+        const currentScrollY = lenis ? lenis.scroll : window.scrollY;
+        const scrollRatio = Math.min(Math.max(currentScrollY / maxScroll, 0), 1);
+        targetTime = scrollRatio * (duration - 0.04);
+
         const diff = targetTime - heroVideo.currentTime;
-        if (Math.abs(diff) > 0.02 && !isSeeking) {
+        if (Math.abs(diff) > 0.008 && !isSeeking) {
           isSeeking = true;
-          // Step by proportional delta for ultra-smooth scrub and reverse playback
-          const step = diff * 0.25;
-          heroVideo.currentTime = Math.min(
-            Math.max(heroVideo.currentTime + step, 0),
-            duration
+          // Direct fastSeek if available in browser for instant hardware-accelerated seek
+          const nextTime = Math.min(
+            Math.max(heroVideo.currentTime + diff * 0.45, 0),
+            duration - 0.02
           );
+
+          if (typeof heroVideo.fastSeek === 'function') {
+            heroVideo.fastSeek(nextTime);
+          } else {
+            heroVideo.currentTime = nextTime;
+          }
         }
       }
-      rafId = requestAnimationFrame(updateVideoTimeline);
+      requestAnimationFrame(updateVideoTimeline);
     };
 
     heroVideo.addEventListener('seeked', () => {
       isSeeking = false;
     });
 
-    rafId = requestAnimationFrame(updateVideoTimeline);
-
-    window.addEventListener('scroll', () => {}, { passive: true });
+    requestAnimationFrame(updateVideoTimeline);
   }
+
+  // Smooth anchor link scrolling via Lenis
+  $('a[href^="#"]').on('click', function (e) {
+    const targetId = $(this).attr('href');
+    if (targetId && targetId !== '#') {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        if (lenis) {
+          lenis.scrollTo(targetElement, { offset: 0, duration: 1.2 });
+        } else {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  });
 
   // Initialize AOS (Animate On Scroll) if loaded
   if (typeof AOS !== 'undefined') {
