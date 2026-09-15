@@ -1,6 +1,82 @@
 import './index.css';
 
+// Prevent browser from restoring scroll position or jumping to previous anchors on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Ensure we start at top of homepage on initial load or reload
+  if (window.location.hash && window.location.hash !== '#beranda') {
+    history.replaceState(null, '', window.location.pathname);
+  }
+  window.scrollTo(0, 0);
+
+  // Bi-directional Scroll-linked Video Playback:
+  // Play forward when scrolling down, play backward (rewind) when scrolling up, pause when stationary.
+  const heroVideo = document.getElementById('hero-background-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.pause();
+
+    let targetTime = 0;
+    let isSeeking = false;
+    let isReady = false;
+    let rafId = null;
+
+    const onMetadataLoaded = () => {
+      isReady = true;
+      const duration = heroVideo.duration || 1;
+      const maxScroll = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      const scrollRatio = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+      targetTime = scrollRatio * duration;
+      heroVideo.currentTime = targetTime;
+    };
+
+    if (heroVideo.readyState >= 1) {
+      onMetadataLoaded();
+    } else {
+      heroVideo.addEventListener('loadedmetadata', onMetadataLoaded);
+    }
+
+    const updateVideoTimeline = () => {
+      if (isReady && heroVideo.duration) {
+        const duration = heroVideo.duration;
+        const maxScroll = Math.max(
+          document.documentElement.scrollHeight - window.innerHeight,
+          1
+        );
+        const scrollRatio = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+        targetTime = scrollRatio * (duration - 0.05);
+
+        // Smoothly interpolate current video time towards target time
+        const diff = targetTime - heroVideo.currentTime;
+        if (Math.abs(diff) > 0.02 && !isSeeking) {
+          isSeeking = true;
+          // Step by proportional delta for ultra-smooth scrub and reverse playback
+          const step = diff * 0.25;
+          heroVideo.currentTime = Math.min(
+            Math.max(heroVideo.currentTime + step, 0),
+            duration
+          );
+        }
+      }
+      rafId = requestAnimationFrame(updateVideoTimeline);
+    };
+
+    heroVideo.addEventListener('seeked', () => {
+      isSeeking = false;
+    });
+
+    rafId = requestAnimationFrame(updateVideoTimeline);
+
+    window.addEventListener('scroll', () => {}, { passive: true });
+  }
+
   // Initialize AOS (Animate On Scroll) if loaded
   if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -164,7 +240,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   $('#btn-masuk-desktop, #btn-masuk-mobile').on('click', () => openAuthModal('masuk'));
-  $('#btn-bergabung-desktop, #btn-bergabung-mobile').on('click', () => openAuthModal('bergabung'));
+  $('#btn-bergabung-desktop, #btn-bergabung-mobile, #cta-btn-bergabung').on('click', () => openAuthModal('bergabung'));
+
+  $('#cta-btn-booking, .footer-booking-btn').on('click', () => openInfoModal('booking'));
+  $('.footer-tentang-btn').on('click', () => openInfoModal('tentang'));
+  $('.footer-credits-btn').on('click', () => openInfoModal('credits'));
 
   $('#close-auth-modal, #auth-modal-backdrop').on('click', () => closeAuthModal());
 

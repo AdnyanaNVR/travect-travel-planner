@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travect. — Your Next Great Escape Starts Here</title>
-    <meta name="description" content="Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit." />
+    <meta name="description" content="Platform kurasi perjalanan Travect dengan hero section elegan, keunggulan layanan, ulasan traveler, call to action, dan navigasi lengkap." />
     <meta property="og:title" content="Travect. — Your Next Great Escape Starts Here" />
-    <meta property="og:description" content="Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit." />
+    <meta property="og:description" content="Platform kurasi perjalanan Travect dengan hero section elegan, keunggulan layanan, ulasan traveler, call to action, dan navigasi lengkap." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -34,17 +34,31 @@
     <!-- Application Tailwind CSS stylesheet -->
     <link rel="stylesheet" href="/src/index.css" />
   </head>
-  <body class="bg-gray-50 text-gray-900 antialiased selection:bg-purple-100 selection:text-purple-900">
-    <!-- Outer container: min-h-screen, bg-gray-50 -->
-    <div id="outer-container" class="min-h-screen bg-gray-50 flex flex-col">
+  <body class="bg-black text-gray-900 antialiased selection:bg-purple-100 selection:text-purple-900">
+    <!-- Full-page Fixed Background Video (Pure raw background without any overlay) -->
+    <div id="global-video-background-container" class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+      <video
+        id="hero-background-video"
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="w-full h-full object-cover"
+      >
+        <source src="/assets/video/airplane-home.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Outer container: relative z-10 over the pure video background -->
+    <div id="outer-container" class="relative z-10 min-h-screen bg-transparent flex flex-col">
       <!-- Top accent line matching the design screenshot -->
       <div
         id="top-accent-bar"
         class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 z-50 pointer-events-none"
       ></div>
 
-      <!-- Hero section: relative, h-screen, overflow-hidden -->
-      <section id="hero-section" class="relative h-screen overflow-hidden">
+      <!-- Hero section: relative, h-screen, transparent -->
+      <section id="beranda" class="relative h-screen w-full bg-transparent">
         <!-- Content wrapper: relative, h-full, flex flex-col -->
         <div id="content-wrapper" class="relative h-full flex flex-col">
           <!-- Navigation Bar: Max width 7xl, centered with px-8 py-6 -->
@@ -196,30 +210,357 @@
               id="hero-content"
               class="text-center max-w-4xl mx-auto -mt-24 sm:-mt-48 md:-mt-80 select-none"
             >
-              <!-- Main Headings: Libertinus Sans -->
+              <!-- Main Headings: Libertinus Sans with clean drop shadow for clear legibility over video -->
               <h1
                 id="hero-title"
-                class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-neutral-900 leading-[1.12]"
+                class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-neutral-900 leading-[1.12] drop-shadow-sm"
               >
                 <span>Your </span>
-                <span class="text-slate-400 font-bold">next </span>
+                <span class="text-slate-500 font-bold">next </span>
                 <span>great</span>
                 <br />
-                <span class="text-slate-400 font-bold">escape </span>
+                <span class="text-slate-500 font-bold">escape </span>
                 <span>starts here</span>
               </h1>
 
               <!-- Subtitle: Montserrat -->
               <p
                 id="hero-subtitle"
-                class="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed"
+                class="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-neutral-800 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-xs"
               >
                 Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit
               </p>
+
+              <!-- Scroll Indicator / Quick Jump -->
+              <div class="mt-8 flex items-center justify-center">
+                <a
+                  href="#kenapa-travect"
+                  class="inline-flex items-center gap-2 text-xs font-semibold text-neutral-800 hover:text-black transition-colors px-4 py-2 rounded-full border border-white/60 bg-white/80 backdrop-blur-md hover:bg-white shadow-sm"
+                  aria-label="Gulir ke bagian Kenapa Travect"
+                >
+                  <span>Jelajahi Lebih Lanjut</span>
+                  <i class="fa-solid fa-arrow-down text-[10px]"></i>
+                </a>
+              </div>
             </div>
           </main>
         </div>
       </section>
+
+      <!-- 1. KENAPA TRAVECT SECTION -->
+      <section
+        id="kenapa-travect"
+        class="relative py-28 sm:py-36 overflow-hidden"
+      >
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <!-- Left Column: Penjelasan rata kiri inside an elegant floating glass card -->
+            <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="800">
+              <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-white/50 shadow-xl">
+                <span class="inline-block text-xs uppercase tracking-widest font-bold text-neutral-500 mb-3">
+                  Keunggulan Kami
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.18] mb-6">
+                  Kenapa Memilih Travect untuk Liburan Anda?
+                </h2>
+                <p class="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-2xl mb-10 font-normal">
+                  Kami mengubah cara Anda merencanakan liburan. Dari kurasi penginapan butik berstandar tinggi hingga transparansi harga tanpa biaya tak terduga, setiap langkah dirancang agar perjalanan Anda tenang, nyaman, dan tak terlupakan.
+                </p>
+
+                <!-- Feature Breakdown Points -->
+                <div class="space-y-6">
+                  <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
+                      <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-bold text-neutral-900 mb-1">
+                        Kurasi Destinasi & Hotel Terverifikasi
+                      </h3>
+                      <p class="text-sm text-neutral-600 leading-relaxed">
+                        Setiap hotel, vila, dan rute perjalanan melewati inspeksi langsung agar foto dan fasilitas selalu sesuai ekspektasi Anda.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
+                      <i class="fa-solid fa-shield-halved text-sm"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-bold text-neutral-900 mb-1">
+                        Transparansi Harga Tanpa Biaya Tersembunyi
+                      </h3>
+                      <p class="text-sm text-neutral-600 leading-relaxed">
+                        Harga yang tertera saat pencarian adalah harga total akhir. Tidak ada biaya admin siluman atau lonjakan mendadak di kasir.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-1 shadow-xs">
+                      <i class="fa-solid fa-bolt-lightning text-sm"></i>
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-bold text-neutral-900 mb-1">
+                        Pemesanan Instan & Bantuan 24/7
+                      </h3>
+                      <p class="text-sm text-neutral-600 leading-relaxed">
+                        Tiket dan voucher langsung masuk ke ponsel Anda dalam 60 detik, dengan tim concierge personal yang siap siaga setiap saat.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Sisakan tempat dikanan untuk gambar nanti -->
+            <div class="lg:col-span-5" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+              <div
+                id="kenapa-travect-image-placeholder"
+                class="relative aspect-[4/5] w-full rounded-3xl border-2 border-dashed border-neutral-300 bg-white/80 backdrop-blur-md hover:bg-white/90 transition-colors flex flex-col items-center justify-center p-8 text-center group shadow-xl"
+              >
+                <div class="w-16 h-16 rounded-2xl bg-neutral-900 text-white shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform duration-300 mb-4">
+                  <i class="fa-regular fa-image text-2xl"></i>
+                </div>
+                <h4 class="font-heading text-lg font-bold text-neutral-900 mb-1">
+                  Tempat Gambar Destinasi
+                </h4>
+                <p class="text-xs text-neutral-600 max-w-xs leading-relaxed">
+                  Ruang visual disediakan khusus untuk gambar promosi, infografis perjalanan, atau foto lanskap destinasi eksklusif Travect.
+                </p>
+                <div class="mt-4 px-3.5 py-1.5 bg-neutral-100 rounded-full text-[11px] font-semibold text-neutral-700">
+                  Rasio Rekomendasi: 4:5 Portrait
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. TESTIMONI SECTION -->
+      <section id="testimoni" class="py-24 sm:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-14 bg-white/85 backdrop-blur-md py-6 px-8 rounded-2xl shadow-md border border-white/60" data-aos="fade-up">
+            <span class="inline-block text-xs uppercase tracking-widest font-bold text-neutral-500 mb-2">
+              Cerita Penjelajah
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.18]">
+              Kata Mereka yang Sudah Berangkat Bersama Travect
+            </h2>
+            <p class="mt-3 text-base text-neutral-600 font-normal">
+              Pengalaman nyata dari ribuan pelancong yang menemukan sudut terindah dunia dengan cara yang lebih sederhana.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Card 1 -->
+            <div
+              class="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white transition-colors"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div>
+                <div class="flex items-center gap-1 text-neutral-900 text-xs mb-5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
+                  "Menemukan vila tersembunyi di Ubud yang biasanya tidak ada di aplikasi travel besar. Sistem booking-nya cepat sekali tanpa ada biaya tersembunyi di akhir."
+                </p>
+              </div>
+              <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-neutral-900 text-white font-medium text-xs flex items-center justify-center">
+                  AR
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-neutral-900">Anindya Rahma</h4>
+                  <p class="text-xs text-neutral-500">Liburan Keluarga ke Bali</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white transition-colors"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div>
+                <div class="flex items-center gap-1 text-neutral-900 text-xs mb-5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
+                  "Desain antarmukanya sangat bersih dan tidak membingungkan. Pesan hotel di Kyoto hanya perlu 2 menit, voucher langsung aktif di Apple Wallet."
+                </p>
+              </div>
+              <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-neutral-900 text-white font-medium text-xs flex items-center justify-center">
+                  DP
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-neutral-900">Dimas Pratama</h4>
+                  <p class="text-xs text-neutral-500">Solo Traveler ke Jepang</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white transition-colors"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div>
+                <div class="flex items-center gap-1 text-neutral-900 text-xs mb-5">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
+                  "Layanan tim concierge Travect sangat responsif saat penerbangan kami sempat tertunda. Mereka langsung bantu reschedule penjemputan bandara tanpa repot."
+                </p>
+              </div>
+              <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-neutral-900 text-white font-medium text-xs flex items-center justify-center">
+                  ML
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-neutral-900">Maya Lestari</h4>
+                  <p class="text-xs text-neutral-500">Honeymoon Trip ke Labuan Bajo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. CALL TO ACTION SECTION -->
+      <section id="cta-section" class="py-20 sm:py-28 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8 text-center" data-aos="zoom-in" data-aos-duration="700">
+          <div class="bg-neutral-900/95 backdrop-blur-lg text-white rounded-[2.5rem] p-10 sm:p-16 relative overflow-hidden shadow-2xl border border-white/10">
+            <!-- Background aesthetic glows -->
+            <div class="absolute -top-24 -right-24 w-80 h-80 bg-neutral-800 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-neutral-800 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-2xl mx-auto">
+              <span class="inline-block text-xs uppercase tracking-widest font-semibold text-neutral-400 mb-3">
+                Mulai Petualangan
+              </span>
+              <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.15] mb-5">
+                Siap Menemukan Destinasi Impian Anda Berikutnya?
+              </h2>
+              <p class="text-sm sm:text-base text-neutral-300 leading-relaxed mb-8">
+                Bergabunglah dengan ribuan penjelajah lainnya. Dapatkan kurasi destinasi pilihan mingguan dan potongan eksklusif untuk pesanan pertama Anda.
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button
+                  type="button"
+                  id="cta-btn-booking"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-white text-neutral-900 font-medium text-sm rounded-full hover:bg-neutral-100 transition-colors shadow-xs cursor-pointer focus:outline-hidden"
+                >
+                  Cari & Pesan Sekarang
+                </button>
+                <button
+                  type="button"
+                  id="cta-btn-bergabung"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-neutral-800 text-white border border-neutral-700 font-medium text-sm rounded-full hover:bg-neutral-700 transition-colors shadow-xs cursor-pointer focus:outline-hidden"
+                >
+                  Buat Akun Gratis
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. FOOTER -->
+      <footer id="main-footer" class="bg-white/95 backdrop-blur-md border-t border-white/40 py-16 text-neutral-600 text-sm shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 mb-12">
+            <!-- Brand & Bio -->
+            <div class="md:col-span-4">
+              <div class="inline-flex items-baseline select-none mb-4">
+                <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-2xl">Travect</span>
+                <span class="font-serif-logo font-bold text-neutral-900 text-2xl">.</span>
+              </div>
+              <p class="text-sm text-neutral-500 leading-relaxed max-w-sm mb-6">
+                Platform kurasi perjalanan modern untuk mencari, membandingkan, dan memesan destinasi favorit dengan mudah, cepat, dan transparan.
+              </p>
+              <div class="flex items-center gap-3 text-neutral-500">
+                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Twitter">
+                  <i class="fa-brands fa-x-twitter text-sm"></i>
+                </a>
+                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="TikTok">
+                  <i class="fa-brands fa-tiktok text-sm"></i>
+                </a>
+                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in text-sm"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-2 sm:col-span-4">
+              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Navigasi</h4>
+              <ul class="space-y-2.5 text-xs sm:text-sm">
+                <li><a href="#beranda" class="text-neutral-500 hover:text-neutral-900 transition-colors">Beranda</a></li>
+                <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Kenapa Travect</a></li>
+                <li><a href="#testimoni" class="text-neutral-500 hover:text-neutral-900 transition-colors">Testimoni</a></li>
+                <li><button type="button" class="footer-booking-btn text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer text-left">Pesan Tiket</button></li>
+              </ul>
+            </div>
+
+            <!-- Destinations -->
+            <div class="md:col-span-3 sm:col-span-4">
+              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Destinasi Populer</h4>
+              <ul class="space-y-2.5 text-xs sm:text-sm">
+                <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Ubud & Canggu, Bali</a></li>
+                <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Labuan Bajo, NTT</a></li>
+                <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Kyoto & Tokyo, Jepang</a></li>
+                <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Raja Ampat, Papua</a></li>
+              </ul>
+            </div>
+
+            <!-- Newsletter / Contact -->
+            <div class="md:col-span-3 sm:col-span-4">
+              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Hubungi Kami</h4>
+              <p class="text-xs text-neutral-500 mb-3 leading-relaxed">
+                Pertanyaan seputar tiket atau pemesanan bisnis? Concierge kami siap membantu.
+              </p>
+              <div class="text-xs text-neutral-700 font-medium space-y-1.5">
+                <p><i class="fa-regular fa-envelope mr-2 text-neutral-400"></i> halo@travect.com</p>
+                <p><i class="fa-solid fa-phone mr-2 text-neutral-400"></i> +62 21 8900 1234</p>
+                <p><i class="fa-regular fa-clock mr-2 text-neutral-400"></i> Setiap Hari, 24 Jam</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom bar -->
+          <div class="pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 gap-4">
+            <p>© 2026 Travect Inc. Hak Cipta Dilindungi Undang-Undang.</p>
+            <div class="flex items-center gap-6">
+              <button type="button" class="footer-tentang-btn hover:text-neutral-700 transition-colors cursor-pointer">Tentang Kami</button>
+              <button type="button" class="footer-credits-btn hover:text-neutral-700 transition-colors cursor-pointer">Kredit & Spesifikasi</button>
+              <span class="hover:text-neutral-700">Kebijakan Privasi</span>
+              <span class="hover:text-neutral-700">Syarat & Ketentuan</span>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       <!-- Interactive Auth Modal (Masuk / Bergabung) -->
       <div

@@ -1,6 +1,6 @@
 {
   "name": "Travect",
-  "description": "Clean and modern travel booking website hero section with responsive navigation.",
+  "description": "Platform kurasi perjalanan Travect dengan hero section elegan, keunggulan layanan, ulasan traveler, call to action, dan navigasi lengkap.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
