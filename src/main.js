@@ -126,41 +126,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // GSAP subtle entrance animations
+  // GSAP subtle entrance & interactive animations
   if (typeof gsap !== 'undefined') {
-    gsap.from('#brand-logo', {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.from('#brand-logo', {
       opacity: 0,
-      y: -15,
-      duration: 0.6,
-      ease: 'power2.out',
-    });
-    gsap.from('#desktop-menu', {
-      opacity: 0,
-      scale: 0.95,
+      y: -20,
       duration: 0.7,
-      delay: 0.1,
-      ease: 'power2.out',
-    });
-    gsap.from('#desktop-auth-actions', {
+    })
+    .from('#desktop-menu', {
+      opacity: 0,
+      y: -15,
+      scale: 0.94,
+      duration: 0.7,
+    }, '-=0.5')
+    .from('#desktop-auth-actions', {
       opacity: 0,
       y: -15,
       duration: 0.6,
-      delay: 0.15,
-      ease: 'power2.out',
-    });
-    gsap.from('#hero-title', {
+    }, '-=0.5')
+    .from('#hero-title span', {
+      opacity: 0,
+      y: 35,
+      duration: 0.9,
+      stagger: 0.08,
+    }, '-=0.3')
+    .from('#hero-subtitle', {
       opacity: 0,
       y: 25,
       duration: 0.8,
-      delay: 0.25,
-      ease: 'power3.out',
-    });
-    gsap.from('#hero-subtitle', {
+    }, '-=0.6')
+    .from('#hero-content a', {
       opacity: 0,
-      y: 20,
-      duration: 0.8,
-      delay: 0.45,
-      ease: 'power3.out',
+      scale: 0.9,
+      duration: 0.6,
+    }, '-=0.5');
+
+    // Subtle 3D tilt interaction for interactive cards on desktop
+    const tiltCards = document.querySelectorAll('#destination-carousel-card, .testimoni-card');
+    tiltCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 1024) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(card, {
+          rotationY: x * 0.03,
+          rotationX: -y * 0.03,
+          transformPerspective: 1000,
+          duration: 0.4,
+          ease: 'power1.out',
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          rotationY: 0,
+          rotationX: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      });
     });
   }
 
@@ -335,6 +362,122 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   $('#close-info-modal, #info-modal-backdrop, .close-info-btn').on('click', () => closeInfoModal());
+
+  // Interactive Destination Carousel Logic
+  let currentCarouselIndex = 0;
+  const $slides = $('.carousel-slide');
+  const totalSlides = $slides.length;
+  const $dots = $('.carousel-dot');
+  const $indexDisplay = $('#carousel-current-index');
+  let carouselAutoTimer = null;
+
+  function showSlide(index) {
+    if (index < 0) {
+      currentCarouselIndex = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      currentCarouselIndex = 0;
+    } else {
+      currentCarouselIndex = index;
+    }
+
+    $slides.each(function (i) {
+      const $slide = $(this);
+      if (i === currentCarouselIndex) {
+        $slide.removeClass('inactive').addClass('active');
+      } else {
+        $slide.removeClass('active').addClass('inactive');
+      }
+    });
+
+    $dots.each(function (i) {
+      const $dot = $(this);
+      if (i === currentCarouselIndex) {
+        $dot.removeClass('w-2 bg-neutral-300').addClass('w-6 bg-neutral-900');
+      } else {
+        $dot.removeClass('w-6 bg-neutral-900').addClass('w-2 bg-neutral-300');
+      }
+    });
+
+    if ($indexDisplay.length) {
+      $indexDisplay.text(currentCarouselIndex + 1);
+    }
+  }
+
+  function nextSlide() {
+    showSlide(currentCarouselIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentCarouselIndex - 1);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    carouselAutoTimer = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoPlay() {
+    if (carouselAutoTimer) {
+      clearInterval(carouselAutoTimer);
+      carouselAutoTimer = null;
+    }
+  }
+
+  $('#carousel-next-btn').on('click', () => {
+    nextSlide();
+    startAutoPlay();
+  });
+
+  $('#carousel-prev-btn').on('click', () => {
+    prevSlide();
+    startAutoPlay();
+  });
+
+  $dots.on('click', function () {
+    const targetIdx = parseInt($(this).data('target'), 10);
+    showSlide(targetIdx);
+    startAutoPlay();
+  });
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const carouselCard = document.getElementById('destination-carousel-container');
+
+  if (carouselCard) {
+    carouselCard.addEventListener('mouseenter', stopAutoPlay);
+    carouselCard.addEventListener('mouseleave', startAutoPlay);
+
+    carouselCard.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    carouselCard.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoPlay();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 40) {
+        if (swipeDistance < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }
+  }
+
+  startAutoPlay();
+
+  // Booking action from destination card
+  $(document).on('click', '.destination-book-btn', function () {
+    const dest = $(this).data('destination');
+    openInfoModal('booking');
+  });
 
   // Close modals on Escape key
   $(document).on('keydown', (e) => {
