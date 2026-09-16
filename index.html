@@ -61,34 +61,34 @@
       <section id="beranda" class="relative h-screen w-full bg-transparent">
         <!-- Content wrapper: relative, h-full, flex flex-col -->
         <div id="content-wrapper" class="relative h-full flex flex-col">
-          <!-- Navigation Bar: Max width for 1440x1024 desktop, centered with px-8 xl:px-12 py-6 xl:py-8 -->
+          <!-- Navigation Bar: Max width for 1440x1024 desktop, responsive spacing for tablet and mobile -->
           <header id="header-nav" class="w-full shrink-0 relative z-30">
-            <nav class="max-w-[1340px] mx-auto px-8 xl:px-12 py-6 xl:py-8 flex items-center justify-between">
+            <nav class="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-6 lg:px-8 xl:px-12 py-4 md:py-5 lg:py-6 xl:py-8 flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
               <!-- Brand Logo: "Travect." with the logo typography provided -->
-              <div class="flex items-center">
+              <div class="flex items-center shrink-0">
                 <a
                   href="#beranda"
                   id="brand-logo"
                   class="inline-flex items-baseline select-none focus:outline-hidden group"
                   aria-label="Travect Home"
                 >
-                  <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-2xl xl:text-3xl group-hover:opacity-90 transition-colors">
+                  <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl md:text-2xl xl:text-3xl group-hover:opacity-90 transition-colors">
                     Travect
                   </span>
-                  <span class="font-serif-logo font-bold text-neutral-900 text-2xl xl:text-3xl">.</span>
+                  <span class="font-serif-logo font-bold text-neutral-900 text-xl md:text-2xl xl:text-3xl">.</span>
                 </a>
               </div>
 
-              <!-- Desktop Menu Items (hidden on mobile): Beranda, Tentang, Booking, Credits -->
+              <!-- Desktop & Tablet Menu Items (hidden on mobile): Beranda, Tentang, Booking, Credits -->
               <div
                 id="desktop-menu"
-                class="hidden md:flex items-center bg-gray-200/50 p-1.5 rounded-full border border-gray-200/70 shadow-2xs backdrop-blur-xs"
+                class="hidden md:flex items-center bg-gray-200/50 p-1 lg:p-1.5 rounded-full border border-gray-200/70 shadow-2xs backdrop-blur-xs gap-0.5"
               >
                 <button
                   type="button"
                   data-tab="Beranda"
                   id="nav-item-beranda"
-                  class="nav-tab-btn px-6 py-2 rounded-full text-sm font-medium transition-colors bg-[#2b2b2b] text-white shadow-xs cursor-pointer focus:outline-hidden"
+                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors bg-[#2b2b2b] text-white shadow-xs cursor-pointer focus:outline-hidden"
                 >
                   Beranda
                 </button>
@@ -96,7 +96,7 @@
                   type="button"
                   data-tab="Tentang"
                   id="nav-item-tentang"
-                  class="nav-tab-btn px-6 py-2 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
                 >
                   Tentang
                 </button>
@@ -104,7 +104,7 @@
                   type="button"
                   data-tab="Booking"
                   id="nav-item-booking"
-                  class="nav-tab-btn px-6 py-2 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
                 >
                   Booking
                 </button>
@@ -112,25 +112,25 @@
                   type="button"
                   data-tab="Credits"
                   id="nav-item-credits"
-                  class="nav-tab-btn px-6 py-2 rounded-full text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
                 >
                   Credits
                 </button>
               </div>
 
-              <!-- Desktop Auth Buttons -->
-              <div id="desktop-auth-actions" class="hidden md:flex items-center space-x-3">
+              <!-- Desktop & Tablet Auth Buttons -->
+              <div id="desktop-auth-actions" class="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-3 shrink-0">
                 <button
                   type="button"
                   id="btn-masuk-desktop"
-                  class="text-sm font-medium text-gray-800 hover:text-black transition-colors px-4 py-2 focus:outline-hidden cursor-pointer rounded-full"
+                  class="text-xs lg:text-sm font-medium text-gray-800 hover:text-black transition-colors px-2.5 md:px-3 lg:px-4 py-1.5 lg:py-2 focus:outline-hidden cursor-pointer rounded-full"
                 >
                   Masuk
                 </button>
                 <button
                   type="button"
                   id="btn-bergabung-desktop"
-                  class="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer"
+                  class="bg-black text-white text-xs lg:text-sm font-medium px-3.5 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer shrink-0"
                 >
                   Bergabung
                 </button>
@@ -149,8 +149,8 @@
               </div>
             </nav>
 
-            <!-- Mobile Menu: dropdown with white/95 opacity background, backdrop blur, rounded corners, shadow -->
-            <div id="mobile-menu" class="hidden md:hidden px-6 pt-1 pb-4">
+            <!-- Mobile Menu: absolute floating dropdown over content without pushing elements down -->
+            <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 z-50 px-6 pt-1 pb-4">
               <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 p-5 space-y-2">
                 <div class="flex flex-col space-y-1">
                   <button
@@ -205,10 +205,10 @@
 
           <!-- Main content area: flex-1, flex items-center justify-center -->
           <main id="main-content" class="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12">
-            <!-- Hero Content (optically balanced for 1440x1024 desktop) -->
+            <!-- Hero Content (optically balanced for 1440x1024 desktop and elevated for mobile) -->
             <div
               id="hero-content"
-              class="text-center max-w-4xl xl:max-w-5xl mx-auto -mt-20 sm:-mt-36 md:-mt-48 lg:-mt-52 xl:-mt-56 select-none"
+              class="text-center max-w-4xl xl:max-w-5xl mx-auto -mt-36 sm:-mt-44 md:-mt-48 lg:-mt-52 xl:-mt-56 select-none"
             >
               <!-- Main Headings: Libertinus Sans with clean drop shadow for clear legibility over video -->
               <h1
@@ -226,21 +226,21 @@
               <!-- Subtitle: Montserrat -->
               <p
                 id="hero-subtitle"
-                class="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl xl:text-2xl text-neutral-800 max-w-2xl xl:max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-xs"
+                class="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl xl:text-2xl text-neutral-800 max-w-2xl xl:max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-xs"
               >
                 Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit
               </p>
 
-              <!-- Scroll Indicator / Quick Jump -->
-              <div class="mt-8 xl:mt-10 flex items-center justify-center">
-                <a
-                  href="#kenapa-travect"
-                  class="inline-flex items-center gap-2.5 text-xs xl:text-sm font-semibold text-neutral-800 hover:text-black transition-all px-6 py-3 rounded-full border border-white/70 bg-white/85 backdrop-blur-md hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 group"
-                  aria-label="Gulir ke bagian Kenapa Travect"
+              <!-- Tombol Khusus Mobile: Style sama persis seperti tombol Bergabung -->
+              <div class="mt-6 flex md:hidden items-center justify-center">
+                <button
+                  type="button"
+                  id="hero-mobile-cta-btn"
+                  class="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer active:scale-95 flex items-center gap-2"
                 >
-                  <span>Jelajahi Lebih Lanjut</span>
-                  <i class="fa-solid fa-arrow-down text-[11px] group-hover:translate-y-1 transition-transform duration-300"></i>
-                </a>
+                  <span>Mulai Perjalanan</span>
+                  <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
               </div>
             </div>
           </main>
@@ -250,62 +250,62 @@
       <!-- 1. KENAPA TRAVECT SECTION -->
       <section
         id="kenapa-travect"
-        class="relative py-28 sm:py-36 xl:py-44 overflow-hidden"
+        class="relative py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 overflow-hidden"
       >
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-center">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
             <!-- Left Column: Penjelasan rata kiri inside an elegant floating glass card -->
-            <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="800">
-              <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-12 xl:p-14 border border-white/60 shadow-2xl">
-                <span class="inline-block text-xs xl:text-sm uppercase tracking-widest font-bold text-neutral-500 mb-3">
+            <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="700">
+              <div class="bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-7 border border-white/60 shadow-xl">
+                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1">
                   Keunggulan Kami
                 </span>
-                <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-[50px] font-bold tracking-tight text-neutral-900 leading-[1.16] mb-6">
+                <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-[32px] font-bold tracking-tight text-neutral-900 leading-[1.2] mb-2.5">
                   Kenapa Memilih Travect untuk Liburan Anda?
                 </h2>
-                <p class="text-base sm:text-lg xl:text-xl text-neutral-700 leading-relaxed max-w-2xl mb-10 font-normal">
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed max-w-2xl mb-4 font-normal">
                   Kami mengubah cara Anda merencanakan liburan. Dari kurasi penginapan butik berstandar tinggi hingga transparansi harga tanpa biaya tak terduga, setiap langkah dirancang agar perjalanan Anda tenang, nyaman, dan tak terlupakan.
                 </p>
 
                 <!-- Feature Breakdown Points -->
-                <div class="space-y-7">
-                  <div class="flex items-start gap-5 p-3.5 -mx-3.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-12 h-12 xl:w-13 xl:h-13 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:bg-black group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
+                <div class="space-y-2.5 sm:space-y-3">
+                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-lg xl:text-xl font-bold text-neutral-900 mb-1.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Kurasi Destinasi & Hotel Terverifikasi
                       </h3>
-                      <p class="text-sm xl:text-base text-neutral-600 leading-relaxed">
+                      <p class="text-xs text-neutral-600 leading-relaxed">
                         Setiap hotel, vila, dan rute perjalanan melewati inspeksi langsung agar foto dan fasilitas selalu sesuai ekspektasi Anda.
                       </p>
                     </div>
                   </div>
 
-                  <div class="flex items-start gap-5 p-3.5 -mx-3.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-12 h-12 xl:w-13 xl:h-13 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:bg-black group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
-                      <i class="fa-solid fa-shield-halved text-base"></i>
+                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-shield-halved text-xs"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-lg xl:text-xl font-bold text-neutral-900 mb-1.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Transparansi Harga Tanpa Biaya Tersembunyi
                       </h3>
-                      <p class="text-sm xl:text-base text-neutral-600 leading-relaxed">
+                      <p class="text-xs text-neutral-600 leading-relaxed">
                         Harga yang tertera saat pencarian adalah harga total akhir. Tidak ada biaya admin siluman atau lonjakan mendadak di kasir.
                       </p>
                     </div>
                   </div>
 
-                  <div class="flex items-start gap-5 p-3.5 -mx-3.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-12 h-12 xl:w-13 xl:h-13 rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-md group-hover:bg-black group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      <i class="fa-solid fa-bolt-lightning text-base"></i>
+                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-bolt-lightning text-xs"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-lg xl:text-xl font-bold text-neutral-900 mb-1.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Pemesanan Instan & Bantuan 24/7
                       </h3>
-                      <p class="text-sm xl:text-base text-neutral-600 leading-relaxed">
+                      <p class="text-xs text-neutral-600 leading-relaxed">
                         Tiket dan voucher langsung masuk ke ponsel Anda dalam 60 detik, dengan tim concierge personal yang siap siaga setiap saat.
                       </p>
                     </div>
@@ -315,22 +315,22 @@
             </div>
 
             <!-- Right Column: Interactive Destination Carousel (Perfect on mobile, tablet & desktop) -->
-            <div class="lg:col-span-5 w-full" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+            <div class="lg:col-span-5 w-full" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
               <div
                 id="destination-carousel-card"
-                class="relative w-full rounded-3xl p-6 sm:p-8 glass-panel shadow-2xl overflow-hidden group"
+                class="relative w-full rounded-3xl p-4 sm:p-5 lg:p-5.5 glass-panel shadow-xl overflow-hidden group"
               >
                 <!-- Carousel Header -->
-                <div class="flex items-center justify-between mb-5">
+                <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-neutral-900 text-white text-xs shadow-xs">
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-neutral-900 text-white text-[11px] shadow-2xs">
                       <i class="fa-solid fa-compass"></i>
                     </span>
                     <div>
-                      <h4 class="font-heading text-base font-bold text-neutral-900 leading-tight">
+                      <h4 class="font-heading text-xs sm:text-sm font-bold text-neutral-900 leading-tight">
                         Destinasi Pilihan
                       </h4>
-                      <p class="text-[11px] text-neutral-500 font-medium">Kurasi eksklusif minggu ini</p>
+                      <p class="text-[10px] text-neutral-500 font-medium">Kurasi eksklusif minggu ini</p>
                     </div>
                   </div>
 
@@ -339,7 +339,7 @@
                     <button
                       type="button"
                       id="carousel-prev-btn"
-                      class="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-700 hover:text-white transition-all flex items-center justify-center text-xs cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+                      class="w-7 h-7 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-700 hover:text-white transition-all flex items-center justify-center text-xs cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
                       aria-label="Destinasi sebelumnya"
                     >
                       <i class="fa-solid fa-chevron-left"></i>
@@ -347,7 +347,7 @@
                     <button
                       type="button"
                       id="carousel-next-btn"
-                      class="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-700 hover:text-white transition-all flex items-center justify-center text-xs cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+                      class="w-7 h-7 rounded-full bg-neutral-100 hover:bg-neutral-900 text-neutral-700 hover:text-white transition-all flex items-center justify-center text-xs cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
                       aria-label="Destinasi berikutnya"
                     >
                       <i class="fa-solid fa-chevron-right"></i>
@@ -356,7 +356,7 @@
                 </div>
 
                 <!-- Carousel Viewport / Stage -->
-                <div id="destination-carousel-container" class="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-950">
+                <div id="destination-carousel-container" class="relative w-full aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/11] rounded-2xl overflow-hidden bg-neutral-950">
                   <!-- Slide 1: Raja Ampat -->
                   <div class="carousel-slide active absolute inset-0 w-full h-full" data-index="0">
                     <img
@@ -365,31 +365,31 @@
                       class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 select-none"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-7 text-white">
-                      <div class="flex items-center justify-between mb-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium text-white border border-white/30">
-                          <i class="fa-solid fa-location-dot text-[10px] text-teal-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-3.5 sm:p-4.5 text-white">
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-medium text-white border border-white/30">
+                          <i class="fa-solid fa-location-dot text-[9px] text-teal-300"></i>
                           Papua Barat, Indonesia
                         </span>
-                        <div class="flex items-center gap-1 text-xs text-amber-300 font-semibold bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-xs">
-                          <i class="fa-solid fa-star text-[10px]"></i>
+                        <div class="flex items-center gap-1 text-[11px] text-amber-300 font-semibold bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                          <i class="fa-solid fa-star text-[9px]"></i>
                           4.98
                         </div>
                       </div>
-                      <h3 class="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
+                      <h3 class="font-heading text-base sm:text-lg font-bold tracking-tight text-white mb-0.5">
                         Kepulauan Raja Ampat
                       </h3>
-                      <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 leading-relaxed mb-3">
+                      <p class="text-[11px] text-neutral-200 line-clamp-1 leading-relaxed mb-2">
                         Gugusan pulau karang eksotis dengan biodiversitas laut terkaya di planet bumi.
                       </p>
                       <div class="flex items-center justify-between pt-2 border-t border-white/20">
                         <div>
-                          <span class="text-[10px] uppercase text-neutral-300 block">Mulai Dari</span>
-                          <span class="font-heading text-sm sm:text-base font-bold text-white">Rp 5.250.000</span>
+                          <span class="text-[8px] uppercase text-neutral-300 block leading-tight">Mulai Dari</span>
+                          <span class="font-heading text-xs sm:text-sm font-bold text-white">Rp 5.250.000</span>
                         </div>
                         <button
                           type="button"
-                          class="destination-book-btn px-4 py-1.5 bg-white text-neutral-900 hover:bg-neutral-200 text-xs font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
+                          class="destination-book-btn px-3 py-1 bg-white text-neutral-900 hover:bg-neutral-200 text-[11px] font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
                           data-destination="Raja Ampat"
                         >
                           Lihat Paket
@@ -406,31 +406,31 @@
                       class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 select-none"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-7 text-white">
-                      <div class="flex items-center justify-between mb-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium text-white border border-white/30">
-                          <i class="fa-solid fa-location-dot text-[10px] text-rose-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-3.5 sm:p-4.5 text-white">
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-medium text-white border border-white/30">
+                          <i class="fa-solid fa-location-dot text-[9px] text-rose-300"></i>
                           Kyoto, Jepang
                         </span>
-                        <div class="flex items-center gap-1 text-xs text-amber-300 font-semibold bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-xs">
-                          <i class="fa-solid fa-star text-[10px]"></i>
+                        <div class="flex items-center gap-1 text-[11px] text-amber-300 font-semibold bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                          <i class="fa-solid fa-star text-[9px]"></i>
                           4.95
                         </div>
                       </div>
-                      <h3 class="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
+                      <h3 class="font-heading text-base sm:text-lg font-bold tracking-tight text-white mb-0.5">
                         Kuil Kuno & Hutan Bambu Arashiyama
                       </h3>
-                      <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 leading-relaxed mb-3">
+                      <p class="text-[11px] text-neutral-200 line-clamp-1 leading-relaxed mb-2">
                         Nikmati ketenangan tradisi teh Jepang di tengah rimbunnya bambu dan lentera senja.
                       </p>
                       <div class="flex items-center justify-between pt-2 border-t border-white/20">
                         <div>
-                          <span class="text-[10px] uppercase text-neutral-300 block">Mulai Dari</span>
-                          <span class="font-heading text-sm sm:text-base font-bold text-white">Rp 7.800.000</span>
+                          <span class="text-[8px] uppercase text-neutral-300 block leading-tight">Mulai Dari</span>
+                          <span class="font-heading text-xs sm:text-sm font-bold text-white">Rp 7.800.000</span>
                         </div>
                         <button
                           type="button"
-                          class="destination-book-btn px-4 py-1.5 bg-white text-neutral-900 hover:bg-neutral-200 text-xs font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
+                          class="destination-book-btn px-3 py-1 bg-white text-neutral-900 hover:bg-neutral-200 text-[11px] font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
                           data-destination="Kyoto"
                         >
                           Lihat Paket
@@ -447,31 +447,31 @@
                       class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 select-none"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-7 text-white">
-                      <div class="flex items-center justify-between mb-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium text-white border border-white/30">
-                          <i class="fa-solid fa-location-dot text-[10px] text-sky-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-3.5 sm:p-4.5 text-white">
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-medium text-white border border-white/30">
+                          <i class="fa-solid fa-location-dot text-[9px] text-sky-300"></i>
                           Oia, Santorini, Yunani
                         </span>
-                        <div class="flex items-center gap-1 text-xs text-amber-300 font-semibold bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-xs">
-                          <i class="fa-solid fa-star text-[10px]"></i>
+                        <div class="flex items-center gap-1 text-[11px] text-amber-300 font-semibold bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                          <i class="fa-solid fa-star text-[9px]"></i>
                           4.99
                         </div>
                       </div>
-                      <h3 class="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
+                      <h3 class="font-heading text-base sm:text-lg font-bold tracking-tight text-white mb-0.5">
                         Kubah Biru & Senja Laut Aegea
                       </h3>
-                      <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 leading-relaxed mb-3">
+                      <p class="text-[11px] text-neutral-200 line-clamp-1 leading-relaxed mb-2">
                         Pemandangan matahari terbenam paling ikonik di tebing kaldera Laut Mediterania.
                       </p>
                       <div class="flex items-center justify-between pt-2 border-t border-white/20">
                         <div>
-                          <span class="text-[10px] uppercase text-neutral-300 block">Mulai Dari</span>
-                          <span class="font-heading text-sm sm:text-base font-bold text-white">Rp 9.450.000</span>
+                          <span class="text-[8px] uppercase text-neutral-300 block leading-tight">Mulai Dari</span>
+                          <span class="font-heading text-xs sm:text-sm font-bold text-white">Rp 9.450.000</span>
                         </div>
                         <button
                           type="button"
-                          class="destination-book-btn px-4 py-1.5 bg-white text-neutral-900 hover:bg-neutral-200 text-xs font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
+                          class="destination-book-btn px-3 py-1 bg-white text-neutral-900 hover:bg-neutral-200 text-[11px] font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
                           data-destination="Santorini"
                         >
                           Lihat Paket
@@ -488,31 +488,31 @@
                       class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 select-none"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-7 text-white">
-                      <div class="flex items-center justify-between mb-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-medium text-white border border-white/30">
-                          <i class="fa-solid fa-location-dot text-[10px] text-emerald-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-3.5 sm:p-4.5 text-white">
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-medium text-white border border-white/30">
+                          <i class="fa-solid fa-location-dot text-[9px] text-emerald-300"></i>
                           Lauterbrunnen, Swiss
                         </span>
-                        <div class="flex items-center gap-1 text-xs text-amber-300 font-semibold bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-xs">
-                          <i class="fa-solid fa-star text-[10px]"></i>
+                        <div class="flex items-center gap-1 text-[11px] text-amber-300 font-semibold bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-xs">
+                          <i class="fa-solid fa-star text-[9px]"></i>
                           4.97
                         </div>
                       </div>
-                      <h3 class="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white mb-1">
+                      <h3 class="font-heading text-base sm:text-lg font-bold tracking-tight text-white mb-0.5">
                         Lembah 72 Air Terjun Alpen
                       </h3>
-                      <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 leading-relaxed mb-3">
+                      <p class="text-[11px] text-neutral-200 line-clamp-1 leading-relaxed mb-2">
                         Pedesaan dongeng diapit tebing kapur menjulang tinggi dengan udara pegunungan segar.
                       </p>
                       <div class="flex items-center justify-between pt-2 border-t border-white/20">
                         <div>
-                          <span class="text-[10px] uppercase text-neutral-300 block">Mulai Dari</span>
-                          <span class="font-heading text-sm sm:text-base font-bold text-white">Rp 11.200.000</span>
+                          <span class="text-[8px] uppercase text-neutral-300 block leading-tight">Mulai Dari</span>
+                          <span class="font-heading text-xs sm:text-sm font-bold text-white">Rp 11.200.000</span>
                         </div>
                         <button
                           type="button"
-                          class="destination-book-btn px-4 py-1.5 bg-white text-neutral-900 hover:bg-neutral-200 text-xs font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
+                          class="destination-book-btn px-3 py-1 bg-white text-neutral-900 hover:bg-neutral-200 text-[11px] font-semibold rounded-full transition-all shadow-sm cursor-pointer hover:scale-105 active:scale-95"
                           data-destination="Swiss Alps"
                         >
                           Lihat Paket
@@ -523,14 +523,14 @@
                 </div>
 
                 <!-- Carousel Dot Indicators -->
-                <div class="flex items-center justify-between mt-4 px-1">
+                <div class="flex items-center justify-between mt-3 px-1">
                   <div class="flex items-center gap-1.5" id="carousel-dots">
-                    <button type="button" class="carousel-dot w-6 h-1.5 rounded-full bg-neutral-900 transition-all cursor-pointer" data-target="0" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot w-5 h-1.5 rounded-full bg-neutral-900 transition-all cursor-pointer" data-target="0" aria-label="Slide 1"></button>
                     <button type="button" class="carousel-dot w-2 h-1.5 rounded-full bg-neutral-300 hover:bg-neutral-400 transition-all cursor-pointer" data-target="1" aria-label="Slide 2"></button>
                     <button type="button" class="carousel-dot w-2 h-1.5 rounded-full bg-neutral-300 hover:bg-neutral-400 transition-all cursor-pointer" data-target="2" aria-label="Slide 3"></button>
                     <button type="button" class="carousel-dot w-2 h-1.5 rounded-full bg-neutral-300 hover:bg-neutral-400 transition-all cursor-pointer" data-target="3" aria-label="Slide 4"></button>
                   </div>
-                  <span class="text-[11px] font-semibold text-neutral-500 tracking-wider">
+                  <span class="text-[10px] font-semibold text-neutral-500 tracking-wider">
                     <span id="carousel-current-index">1</span> / 4
                   </span>
                 </div>
@@ -540,105 +540,237 @@
         </div>
       </section>
 
-      <!-- 2. TESTIMONI SECTION -->
-      <section id="testimoni" class="py-24 sm:py-32 xl:py-40 overflow-hidden">
+      <!-- 2. TESTIMONI SECTION (Side Scrollable with Auto-Scroll & Desktop-only Transparent Arrow Controls) -->
+      <section id="testimoni" class="py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden relative">
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div class="text-center max-w-3xl mx-auto mb-16 bg-white/85 backdrop-blur-md py-8 px-10 rounded-3xl shadow-lg border border-white/60" data-aos="fade-up">
-            <span class="inline-block text-xs xl:text-sm uppercase tracking-widest font-bold text-neutral-500 mb-2">
-              Cerita Penjelajah
-            </span>
-            <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-[48px] font-bold tracking-tight text-neutral-900 leading-[1.18]">
-              Kata Mereka yang Sudah Berangkat Bersama Travect
-            </h2>
-            <p class="mt-4 text-base xl:text-lg text-neutral-600 font-normal">
-              Pengalaman nyata dari ribuan pelancong yang menemukan sudut terindah dunia dengan cara yang lebih sederhana.
-            </p>
+          <!-- Section Header with Title & Live Auto-Scroll Status Badge -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5 lg:mb-6" data-aos="fade-up">
+            <div class="bg-white/85 backdrop-blur-md py-4 sm:py-5 px-5 sm:px-7 rounded-3xl shadow-md border border-white/60 max-w-2xl">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500">
+                  Cerita Penjelajah
+                </span>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-semibold border border-emerald-200/60">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Auto-Scroll
+                </span>
+              </div>
+              <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-[32px] font-bold tracking-tight text-neutral-900 leading-[1.2]">
+                Kata Mereka yang Berangkat Bersama Travect
+              </h2>
+              <p class="mt-1.5 text-xs sm:text-sm text-neutral-600 font-normal">
+                Ulasan terverifikasi dari pelancong yang menemukan destinasi impian dengan mudah dan transparan.
+              </p>
+            </div>
           </div>
+        </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">
+        <!-- Horizontal Side-Scrollable Track with Desktop-Only Transparent Floating Arrow Buttons (< >) -->
+        <div class="relative w-full group/testi">
+          <!-- Left and Right subtle gradient fade on edges -->
+          <div class="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-black/20 to-transparent z-20 pointer-events-none"></div>
+          <div class="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-black/20 to-transparent z-20 pointer-events-none"></div>
+
+          <!-- Desktop-only Transparent Arrow (<) Button -->
+          <button
+            type="button"
+            id="testimonial-scroll-prev"
+            class="hidden lg:flex absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/50 hover:bg-white/95 backdrop-blur-md border border-white/60 text-neutral-800 hover:text-black shadow-lg items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Scroll testimoni sebelumnya"
+          >
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+          </button>
+
+          <!-- Desktop-only Transparent Arrow (>) Button -->
+          <button
+            type="button"
+            id="testimonial-scroll-next"
+            class="hidden lg:flex absolute right-4 xl:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/50 hover:bg-white/95 backdrop-blur-md border border-white/60 text-neutral-800 hover:text-black shadow-lg items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Scroll testimoni berikutnya"
+          >
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </button>
+
+          <div
+            id="testimonial-scroll-container"
+            class="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth px-6 sm:px-8 lg:px-12 py-2 cursor-grab active:cursor-grabbing select-none"
+          >
             <!-- Card 1 -->
-            <div
-              class="testimoni-card bg-white/90 backdrop-blur-md rounded-3xl p-8 xl:p-10 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white hover:shadow-2xl transition-all duration-300 group cursor-default"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
-                <div class="flex items-center gap-1.5 text-neutral-900 text-sm mb-6 group-hover:scale-105 transition-transform origin-left">
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Ubud, Bali
+                  </span>
                 </div>
-                <p class="text-sm sm:text-base xl:text-lg text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
-                  "Menemukan vila tersembunyi di Ubud yang biasanya tidak ada di aplikasi travel besar. Sistem booking-nya cepat sekali tanpa ada biaya tersembunyi di akhir."
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                  "Menemukan vila tersembunyi di Ubud yang biasanya tidak ada di aplikasi travel besar. Sistem booking-nya cepat sekali tanpa ada biaya siluman di kasir."
                 </p>
               </div>
-              <div class="mt-10 pt-6 border-t border-gray-100 flex items-center gap-4">
-                <div class="w-11 h-11 xl:w-12 xl:h-12 rounded-full bg-neutral-900 text-white font-semibold text-xs xl:text-sm flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-xs">
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
                   AR
                 </div>
                 <div>
-                  <h4 class="text-sm xl:text-base font-semibold text-neutral-900">Anindya Rahma</h4>
-                  <p class="text-xs xl:text-sm text-neutral-500">Liburan Keluarga ke Bali</p>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Anindya Rahma</h4>
+                  <p class="text-[10px] text-neutral-500">Liburan Keluarga ke Bali</p>
                 </div>
               </div>
             </div>
 
             <!-- Card 2 -->
-            <div
-              class="testimoni-card bg-white/90 backdrop-blur-md rounded-3xl p-8 xl:p-10 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white hover:shadow-2xl transition-all duration-300 group cursor-default"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
-                <div class="flex items-center gap-1.5 text-neutral-900 text-sm mb-6 group-hover:scale-105 transition-transform origin-left">
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Kyoto, Jepang
+                  </span>
                 </div>
-                <p class="text-sm sm:text-base xl:text-lg text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
                   "Desain antarmukanya sangat bersih dan tidak membingungkan. Pesan hotel di Kyoto hanya perlu 2 menit, voucher langsung aktif di Apple Wallet."
                 </p>
               </div>
-              <div class="mt-10 pt-6 border-t border-gray-100 flex items-center gap-4">
-                <div class="w-11 h-11 xl:w-12 xl:h-12 rounded-full bg-neutral-900 text-white font-semibold text-xs xl:text-sm flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-xs">
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
                   DP
                 </div>
                 <div>
-                  <h4 class="text-sm xl:text-base font-semibold text-neutral-900">Dimas Pratama</h4>
-                  <p class="text-xs xl:text-sm text-neutral-500">Solo Traveler ke Jepang</p>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Dimas Pratama</h4>
+                  <p class="text-[10px] text-neutral-500">Solo Traveler ke Jepang</p>
                 </div>
               </div>
             </div>
 
             <!-- Card 3 -->
-            <div
-              class="testimoni-card bg-white/90 backdrop-blur-md rounded-3xl p-8 xl:p-10 border border-white/60 shadow-xl flex flex-col justify-between hover:bg-white hover:shadow-2xl transition-all duration-300 group cursor-default"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
-                <div class="flex items-center gap-1.5 text-neutral-900 text-sm mb-6 group-hover:scale-105 transition-transform origin-left">
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
-                  <i class="fa-solid fa-star text-amber-400"></i>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Labuan Bajo, NTT
+                  </span>
                 </div>
-                <p class="text-sm sm:text-base xl:text-lg text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
-                  "Layanan tim concierge Travect sangat responsif saat penerbangan kami sempat tertunda. Mereka langsung bantu reschedule penjemputan bandara tanpa repot."
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                  "Layanan tim concierge Travect sangat responsif saat penerbangan kami sempat tertunda. Mereka langsung bantu reschedule penjemputan kapal tanpa repot."
                 </p>
               </div>
-              <div class="mt-10 pt-6 border-t border-gray-100 flex items-center gap-4">
-                <div class="w-11 h-11 xl:w-12 xl:h-12 rounded-full bg-neutral-900 text-white font-semibold text-xs xl:text-sm flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-xs">
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
                   ML
                 </div>
                 <div>
-                  <h4 class="text-sm xl:text-base font-semibold text-neutral-900">Maya Lestari</h4>
-                  <p class="text-xs xl:text-sm text-neutral-500">Honeymoon Trip ke Labuan Bajo</p>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Maya Lestari</h4>
+                  <p class="text-[10px] text-neutral-500">Honeymoon Trip ke Labuan Bajo</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Santorini, Yunani
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                  "Kurasi private yacht dan pemandangan sunset di Oia benar-benar bintang lima. Liburan anniversary kami jadi pengalaman paling berkesan."
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
+                  KS
+                </div>
+                <div>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Kevin Sanjaya</h4>
+                  <p class="text-[10px] text-neutral-500">Anniversary Trip ke Eropa</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Lauterbrunnen, Swiss
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                  "Tiket kereta panorama Alpen dan penginapan kayu chalet terintegrasi rapi dalam satu invoice. Sangat menghemat waktu riset rute berhari-hari."
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
+                  SC
+                </div>
+                <div>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Sarah Clarissa</h4>
+                  <p class="text-[10px] text-neutral-500">Autumn Vacation di Swiss</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+              <div>
+                <div class="flex items-center justify-between mb-2.5">
+                  <div class="flex items-center gap-1 text-amber-400 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full">
+                    Raja Ampat, Papua
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-normal group-hover:text-neutral-900 transition-colors">
+                  "Awalnya ragu pesan trip kepulauan terpencil secara online, namun Travect bermitra dengan pemandu lokal resmi berlisensi yang ramah dan handal."
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 text-white font-semibold text-xs flex items-center justify-center group-hover:bg-neutral-800 transition-colors shadow-2xs shrink-0">
+                  RR
+                </div>
+                <div>
+                  <h4 class="text-xs sm:text-sm font-semibold text-neutral-900">Rizky Ramadhan</h4>
+                  <p class="text-[10px] text-neutral-500">Diving Expedition Papua</p>
                 </div>
               </div>
             </div>
@@ -647,36 +779,36 @@
       </section>
 
       <!-- 3. CALL TO ACTION SECTION -->
-      <section id="cta-section" class="py-20 sm:py-28 xl:py-36 overflow-hidden">
-        <div class="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 text-center" data-aos="zoom-in" data-aos-duration="700">
-          <div class="bg-neutral-900/95 backdrop-blur-lg text-white rounded-[2.5rem] p-10 sm:p-16 xl:p-20 relative overflow-hidden shadow-2xl border border-white/10">
+      <section id="cta-section" class="py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden">
+        <div class="max-w-[1140px] mx-auto px-6 sm:px-8 lg:px-12 text-center" data-aos="zoom-in" data-aos-duration="700">
+          <div class="bg-neutral-900/95 backdrop-blur-lg text-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-white/10">
             <!-- Background aesthetic glows -->
-            <div class="absolute -top-24 -right-24 w-80 h-80 bg-neutral-800 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
-            <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-neutral-800 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-            <div class="relative z-10 max-w-3xl mx-auto">
-              <span class="inline-block text-xs xl:text-sm uppercase tracking-widest font-semibold text-neutral-400 mb-3">
+            <div class="relative z-10 max-w-2xl mx-auto">
+              <span class="inline-block text-[11px] uppercase tracking-widest font-semibold text-neutral-400 mb-1.5">
                 Mulai Petualangan
               </span>
-              <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-[1.15] mb-6">
+              <h2 class="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2] mb-2.5">
                 Siap Menemukan Destinasi Impian Anda Berikutnya?
               </h2>
-              <p class="text-sm sm:text-base xl:text-lg text-neutral-300 leading-relaxed mb-10">
+              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6 max-w-xl mx-auto">
                 Bergabunglah dengan ribuan penjelajah lainnya. Dapatkan kurasi destinasi pilihan mingguan dan potongan eksklusif untuk pesanan pertama Anda.
               </p>
 
-              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                 <button
                   type="button"
                   id="cta-btn-booking"
-                  class="w-full sm:w-auto px-10 py-4 bg-white text-neutral-900 font-semibold text-sm xl:text-base rounded-full hover:bg-neutral-100 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
+                  class="w-full sm:w-auto px-7 py-3 bg-white text-neutral-900 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-100 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
                 >
                   Cari & Pesan Sekarang
                 </button>
                 <button
                   type="button"
                   id="cta-btn-bergabung"
-                  class="w-full sm:w-auto px-10 py-4 bg-neutral-800/90 text-white border border-neutral-700 font-semibold text-sm xl:text-base rounded-full hover:bg-neutral-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
+                  class="w-full sm:w-auto px-7 py-3 bg-neutral-800/90 text-white border border-neutral-700 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
                 >
                   Buat Akun Gratis
                 </button>
@@ -687,38 +819,38 @@
       </section>
 
       <!-- 4. FOOTER -->
-      <footer id="main-footer" class="bg-white/95 backdrop-blur-md border-t border-white/40 py-16 xl:py-20 text-neutral-600 text-sm shadow-2xl">
+      <footer id="main-footer" class="bg-white/95 backdrop-blur-md border-t border-white/40 py-8 sm:py-9 lg:py-10 text-neutral-600 text-sm shadow-2xl">
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 mb-12">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-6">
             <!-- Brand & Bio -->
             <div class="md:col-span-4">
-              <div class="inline-flex items-baseline select-none mb-4">
-                <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-2xl">Travect</span>
-                <span class="font-serif-logo font-bold text-neutral-900 text-2xl">.</span>
+              <div class="inline-flex items-baseline select-none mb-2">
+                <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl md:text-2xl">Travect</span>
+                <span class="font-serif-logo font-bold text-neutral-900 text-xl md:text-2xl">.</span>
               </div>
-              <p class="text-sm text-neutral-500 leading-relaxed max-w-sm mb-6">
+              <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed max-w-sm mb-3.5">
                 Platform kurasi perjalanan modern untuk mencari, membandingkan, dan memesan destinasi favorit dengan mudah, cepat, dan transparan.
               </p>
-              <div class="flex items-center gap-3 text-neutral-500">
-                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Instagram">
-                  <i class="fa-brands fa-instagram text-sm"></i>
+              <div class="flex items-center gap-2 text-neutral-500">
+                <a href="#beranda" class="w-7 h-7 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram text-[11px]"></i>
                 </a>
-                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Twitter">
-                  <i class="fa-brands fa-x-twitter text-sm"></i>
+                <a href="#beranda" class="w-7 h-7 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="Twitter">
+                  <i class="fa-brands fa-x-twitter text-[11px]"></i>
                 </a>
-                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="TikTok">
-                  <i class="fa-brands fa-tiktok text-sm"></i>
+                <a href="#beranda" class="w-7 h-7 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="TikTok">
+                  <i class="fa-brands fa-tiktok text-[11px]"></i>
                 </a>
-                <a href="#beranda" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="LinkedIn">
-                  <i class="fa-brands fa-linkedin-in text-sm"></i>
+                <a href="#beranda" class="w-7 h-7 rounded-full bg-gray-100 hover:bg-black hover:text-white flex items-center justify-center transition-colors" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in text-[11px]"></i>
                 </a>
               </div>
             </div>
 
             <!-- Quick Links -->
             <div class="md:col-span-2 sm:col-span-4">
-              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Navigasi</h4>
-              <ul class="space-y-2.5 text-xs sm:text-sm">
+              <h4 class="font-heading font-bold text-neutral-900 text-xs sm:text-sm mb-2">Navigasi</h4>
+              <ul class="space-y-1 text-xs">
                 <li><a href="#beranda" class="text-neutral-500 hover:text-neutral-900 transition-colors">Beranda</a></li>
                 <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Kenapa Travect</a></li>
                 <li><a href="#testimoni" class="text-neutral-500 hover:text-neutral-900 transition-colors">Testimoni</a></li>
@@ -728,8 +860,8 @@
 
             <!-- Destinations -->
             <div class="md:col-span-3 sm:col-span-4">
-              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Destinasi Populer</h4>
-              <ul class="space-y-2.5 text-xs sm:text-sm">
+              <h4 class="font-heading font-bold text-neutral-900 text-xs sm:text-sm mb-2">Destinasi Populer</h4>
+              <ul class="space-y-1 text-xs">
                 <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Ubud & Canggu, Bali</a></li>
                 <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Labuan Bajo, NTT</a></li>
                 <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Kyoto & Tokyo, Jepang</a></li>
@@ -739,22 +871,22 @@
 
             <!-- Newsletter / Contact -->
             <div class="md:col-span-3 sm:col-span-4">
-              <h4 class="font-heading font-bold text-neutral-900 text-sm mb-4">Hubungi Kami</h4>
-              <p class="text-xs text-neutral-500 mb-3 leading-relaxed">
+              <h4 class="font-heading font-bold text-neutral-900 text-xs sm:text-sm mb-2">Hubungi Kami</h4>
+              <p class="text-xs text-neutral-500 mb-1.5 leading-relaxed">
                 Pertanyaan seputar tiket atau pemesanan bisnis? Concierge kami siap membantu.
               </p>
-              <div class="text-xs text-neutral-700 font-medium space-y-1.5">
-                <p><i class="fa-regular fa-envelope mr-2 text-neutral-400"></i> halo@travect.com</p>
-                <p><i class="fa-solid fa-phone mr-2 text-neutral-400"></i> +62 21 8900 1234</p>
-                <p><i class="fa-regular fa-clock mr-2 text-neutral-400"></i> Setiap Hari, 24 Jam</p>
+              <div class="text-xs text-neutral-700 font-medium space-y-0.5">
+                <p><i class="fa-solid fa-envelope mr-1.5 text-neutral-400"></i> halo@travect.com</p>
+                <p><i class="fa-solid fa-phone mr-1.5 text-neutral-400"></i> +62 21 8900 1234</p>
+                <p><i class="fa-solid fa-clock mr-1.5 text-neutral-400"></i> Setiap Hari, 24 Jam</p>
               </div>
             </div>
           </div>
 
           <!-- Bottom bar -->
-          <div class="pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 gap-4">
-            <p>© 2026 Travect Inc. Hak Cipta Dilindungi Undang-Undang.</p>
-            <div class="flex items-center gap-6">
+          <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 gap-2">
+            <p>© 2026 Travect Inc. Hak Cipta Dilindungi.</p>
+            <div class="flex items-center gap-4">
               <button type="button" class="footer-tentang-btn hover:text-neutral-700 transition-colors cursor-pointer">Tentang Kami</button>
               <button type="button" class="footer-credits-btn hover:text-neutral-700 transition-colors cursor-pointer">Kredit & Spesifikasi</button>
               <span class="hover:text-neutral-700">Kebijakan Privasi</span>
@@ -802,7 +934,7 @@
                 Nama Lengkap
               </label>
               <div class="relative">
-                <i class="fa-regular fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                 <input
                   type="text"
                   id="auth-name-input"
@@ -817,7 +949,7 @@
                 Alamat Email
               </label>
               <div class="relative">
-                <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <i class="fa-solid fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                 <input
                   type="email"
                   id="auth-email-input"
@@ -898,7 +1030,7 @@
           <!-- Booking Content -->
           <div id="info-booking-content" class="hidden">
             <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 text-gray-900 mb-4">
-              <i class="fa-regular fa-compass text-xl"></i>
+              <i class="fa-solid fa-compass text-xl"></i>
             </div>
             <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Cari & Pesan Tiket</h3>
             <p class="text-sm text-gray-500 mb-6">
@@ -921,7 +1053,7 @@
 
               <div class="grid grid-cols-2 gap-3">
                 <div class="flex items-center gap-2 p-3 rounded-xl border border-gray-200">
-                  <i class="fa-regular fa-calendar text-gray-400"></i>
+                  <i class="fa-solid fa-calendar-days text-gray-400"></i>
                   <div class="text-left">
                     <span class="block text-[10px] uppercase font-semibold text-gray-400">Tanggal</span>
                     <span class="text-xs font-medium text-gray-900">20 - 27 Okt</span>

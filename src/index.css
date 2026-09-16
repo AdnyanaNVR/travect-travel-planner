@@ -76,17 +76,15 @@ h1, h2, h3, .font-heading {
   z-index: 1;
 }
 
-/* Subtle pulse animation for interactive badge */
-@keyframes subtle-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-.animate-subtle-bounce {
-  animation: subtle-bounce 3s ease-in-out infinite;
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
+
 
