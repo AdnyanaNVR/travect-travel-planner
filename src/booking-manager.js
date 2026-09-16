@@ -935,7 +935,7 @@ class BookingManager {
       text += `  [${c.checked ? 'X' : ' '}] ${c.text} (${c.category})\n`;
     });
 
-    text += `\nLayanan Concierge Travect: concierge@travect.com\n`;
+    text += `\nLayanan Bantuan Travect: example@travect.com\n`;
 
     return text;
   }

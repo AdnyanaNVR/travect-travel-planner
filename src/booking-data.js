@@ -137,7 +137,7 @@ export const PACKAGES = [
         title: 'Hari 5: Kembali ke Sorong & Kepulangan',
         notes: 'Perjalanan kembali dengan kenangan laut abadi.',
         items: [
-          { id: 'ra-5-1', time: '08:00', activity: 'Check-out Resort & Speedboat ke Sorong', notes: 'Pamit dengan tim concierge' },
+          { id: 'ra-5-1', time: '08:00', activity: 'Check-out Resort & Speedboat ke Sorong', notes: 'Pamit dengan tim penginapan' },
           { id: 'ra-5-2', time: '11:30', activity: 'Oleh-oleh Abon Gulung Khas Sorong', notes: 'Kuliner ikonik Papua Barat' },
           { id: 'ra-5-3', time: '13:30', activity: 'Drop-off Bandara Sorong', notes: 'Penerbangan pulang ke kota tujuan' }
         ]
