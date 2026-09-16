@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import $ from 'jquery';
 import './index.css';
+import { bookingManager } from './booking-manager.js';
 
 // Expose jQuery globally for any inline event handlers or plugins
 if (typeof window !== 'undefined') {
@@ -23,6 +24,11 @@ function initApp() {
     history.replaceState(null, '', window.location.pathname);
   }
   window.scrollTo(0, 0);
+
+  // Initialize Travect Booking System
+  if (bookingManager && typeof bookingManager.init === 'function') {
+    bookingManager.init();
+  }
 
   // Initialize Lenis Smooth Scroll
   let lenis = null;
@@ -231,91 +237,81 @@ function initApp() {
   // Page Navigation State
   let currentPage = 'Beranda';
 
+  function updateNavTabHighlight(pageName) {
+    $('.nav-tab-btn').each(function () {
+      const $btn = $(this);
+      if ($btn.data('tab') === pageName) {
+        $btn
+          .removeClass('text-gray-400 hover:text-gray-800')
+          .addClass('bg-[#2b2b2b] text-white shadow-xs');
+      } else {
+        $btn
+          .removeClass('bg-[#2b2b2b] text-white shadow-xs')
+          .addClass('text-gray-400 hover:text-gray-800');
+      }
+    });
+
+    $('.mobile-nav-tab-btn').each(function () {
+      const $btn = $(this);
+      if ($btn.data('tab') === pageName) {
+        $btn
+          .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
+          .addClass('bg-neutral-900 text-white');
+      } else {
+        $btn
+          .removeClass('bg-neutral-900 text-white')
+          .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
+      }
+    });
+  }
+
   function navigateToPage(pageName, scrollToTop = true) {
     currentPage = pageName;
+
+    // Hide all pages first
+    $('#page-beranda, #page-tentang, #page-booking').addClass('hidden');
+
     if (pageName === 'Tentang') {
-      $('#page-beranda').addClass('hidden');
       $('#page-tentang').removeClass('hidden');
-
-      // Update Nav Buttons
-      $('.nav-tab-btn').each(function () {
-        const $btn = $(this);
-        if ($btn.data('tab') === 'Tentang') {
-          $btn
-            .removeClass('text-gray-400 hover:text-gray-800')
-            .addClass('bg-[#2b2b2b] text-white shadow-xs');
-        } else {
-          $btn
-            .removeClass('bg-[#2b2b2b] text-white shadow-xs')
-            .addClass('text-gray-400 hover:text-gray-800');
-        }
-      });
-
-      $('.mobile-nav-tab-btn').each(function () {
-        const $btn = $(this);
-        if ($btn.data('tab') === 'Tentang') {
-          $btn
-            .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
-            .addClass('bg-neutral-900 text-white');
-        } else {
-          $btn
-            .removeClass('bg-neutral-900 text-white')
-            .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
-        }
-      });
+      updateNavTabHighlight('Tentang');
 
       if (history.pushState) {
         history.pushState(null, '', '#tentang');
       }
+    } else if (pageName === 'Booking') {
+      $('#page-booking').removeClass('hidden');
+      updateNavTabHighlight('Booking');
 
-      if (scrollToTop) {
-        if (lenis) {
-          lenis.scrollTo(0, { immediate: true });
-        } else {
-          window.scrollTo(0, 0);
+      if (history.pushState) {
+        history.pushState(null, '', '#booking');
+      }
+
+      // Ensure booking manager recalculates & updates countdown immediately
+      if (bookingManager) {
+        if (typeof bookingManager.updateBudget === 'function') {
+          bookingManager.updateBudget();
+        } else if (typeof bookingManager.renderBudgetCalculator === 'function') {
+          bookingManager.renderBudgetCalculator();
+        }
+        if (typeof bookingManager.updateProgressIndicator === 'function') {
+          bookingManager.updateProgressIndicator();
         }
       }
     } else {
-      $('#page-tentang').addClass('hidden');
+      // Default to Beranda
       $('#page-beranda').removeClass('hidden');
-
-      // Update Nav Buttons
-      $('.nav-tab-btn').each(function () {
-        const $btn = $(this);
-        if ($btn.data('tab') === 'Beranda') {
-          $btn
-            .removeClass('text-gray-400 hover:text-gray-800')
-            .addClass('bg-[#2b2b2b] text-white shadow-xs');
-        } else {
-          $btn
-            .removeClass('bg-[#2b2b2b] text-white shadow-xs')
-            .addClass('text-gray-400 hover:text-gray-800');
-        }
-      });
-
-      $('.mobile-nav-tab-btn').each(function () {
-        const $btn = $(this);
-        if ($btn.data('tab') === 'Beranda') {
-          $btn
-            .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
-            .addClass('bg-neutral-900 text-white');
-        } else {
-          $btn
-            .removeClass('bg-neutral-900 text-white')
-            .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
-        }
-      });
+      updateNavTabHighlight('Beranda');
 
       if (history.pushState) {
         history.pushState(null, '', window.location.pathname);
       }
+    }
 
-      if (scrollToTop) {
-        if (lenis) {
-          lenis.scrollTo(0, { immediate: true });
-        } else {
-          window.scrollTo(0, 0);
-        }
+    if (scrollToTop) {
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
       }
     }
 
@@ -338,7 +334,7 @@ function initApp() {
     } else if (tabName === 'Tentang') {
       navigateToPage('Tentang');
     } else if (tabName === 'Booking') {
-      openInfoModal('booking');
+      navigateToPage('Booking');
     } else if (tabName === 'Credits') {
       openInfoModal('credits');
     }
@@ -380,7 +376,7 @@ function initApp() {
   });
 
   $('#tentang-btn-konsultasi').on('click', () => {
-    openInfoModal('booking');
+    navigateToPage('Booking');
   });
 
   // Handle cross-page hash links for Beranda sections
@@ -391,8 +387,14 @@ function initApp() {
     if (targetHash === '#beranda') {
       e.preventDefault();
       navigateToPage('Beranda');
+    } else if (targetHash === '#booking') {
+      e.preventDefault();
+      navigateToPage('Booking');
+    } else if (targetHash === '#tentang') {
+      e.preventDefault();
+      navigateToPage('Tentang');
     } else if (targetHash === '#kenapa-travect' || targetHash === '#testimoni' || targetHash === '#destinasi') {
-      if (currentPage === 'Tentang') {
+      if (currentPage !== 'Beranda') {
         e.preventDefault();
         navigateToPage('Beranda', false);
         setTimeout(() => {
@@ -412,6 +414,8 @@ function initApp() {
   // Hash change / initial load check
   if (window.location.hash === '#tentang') {
     navigateToPage('Tentang', true);
+  } else if (window.location.hash === '#booking') {
+    navigateToPage('Booking', true);
   } else {
     navigateToPage('Beranda', true);
   }
@@ -427,6 +431,8 @@ function initApp() {
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#tentang') {
       navigateToPage('Tentang');
+    } else if (window.location.hash === '#booking') {
+      navigateToPage('Booking');
     } else if (window.location.hash === '#beranda' && currentPage !== 'Beranda') {
       navigateToPage('Beranda');
     }
@@ -495,8 +501,7 @@ function initApp() {
     }
   });
 
-  $('#cta-btn-booking, .footer-booking-btn').on('click', () => openInfoModal('booking'));
-  $('.footer-tentang-btn').on('click', () => openInfoModal('tentang'));
+  $('#cta-btn-booking, .footer-booking-btn').on('click', () => navigateToPage('Booking'));
   $('.footer-credits-btn').on('click', () => openInfoModal('credits'));
 
   $('#close-auth-modal, #auth-modal-backdrop').on('click', () => closeAuthModal());
@@ -661,7 +666,19 @@ function initApp() {
   // Booking action from destination card
   $(document).on('click', '.destination-book-btn', function () {
     const dest = $(this).data('destination');
-    openInfoModal('booking');
+    if (dest && bookingManager) {
+      const destLower = String(dest).toLowerCase();
+      if (destLower.includes('raja ampat')) {
+        bookingManager.selectPackage('raja-ampat');
+      } else if (destLower.includes('bromo')) {
+        bookingManager.selectPackage('bromo-quest');
+      } else if (destLower.includes('bali') || destLower.includes('ubud')) {
+        bookingManager.selectPackage('ubud-wellness');
+      } else if (destLower.includes('bajo') || destLower.includes('komodo')) {
+        bookingManager.selectPackage('labuan-bajo');
+      }
+    }
+    navigateToPage('Booking');
   });
 
   // Close modals on Escape key

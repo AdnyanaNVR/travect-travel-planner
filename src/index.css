@@ -101,4 +101,53 @@ h1, h2, h3, .font-heading {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Print Stylesheet for Trip Plan & Booking Voucher */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  #global-video-background-container,
+  #top-accent-bar,
+  #main-navbar,
+  #main-footer,
+  #auth-modal,
+  #info-modal,
+  #edit-activity-modal,
+  #booking-save-toast,
+  #btn-print-plan,
+  #btn-copy-plan-text,
+  #btn-confirm-booking,
+  #summary-btn-confirm-booking,
+  #form-add-activity,
+  #form-add-custom-expense,
+  #form-add-checklist-item,
+  #itinerary-days-tabs button#btn-add-itinerary-day,
+  #btn-delete-current-day,
+  #btn-save-day-notes,
+  .no-print {
+    display: none !important;
+  }
+
+  #page-booking {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  #booking-white-overlay {
+    box-shadow: none !important;
+    border: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .package-card,
+  .itinerary-timeline-item,
+  .checklist-item {
+    page-break-inside: avoid;
+  }
+}
+
+
 

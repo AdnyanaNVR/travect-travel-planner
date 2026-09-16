@@ -1,6 +1,6 @@
 {
   "name": "Travect",
-  "description": "Platform kurasi perjalanan Travect dengan hero section elegan, keunggulan layanan, ulasan traveler, call to action, dan navigasi lengkap.",
+  "description": "Platform kurasi perjalanan Travect dengan eksplorasi destinasi premium, profil tentang kami, serta Booking Studio interaktif lengkap dengan itinerary builder, budget calculator, dan checklist persiapan.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
