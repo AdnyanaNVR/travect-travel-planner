@@ -9,6 +9,7 @@
     <meta property="og:description" content="Platform kurasi perjalanan Travect dengan hero section elegan, keunggulan layanan, ulasan traveler, call to action, dan navigasi lengkap." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/travect0.svg" />
 
     <!-- Google Fonts: Libertinus Sans for main headings, Montserrat for body/UI, Playfair Display for brand serif -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -57,25 +58,22 @@
         class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 z-50 pointer-events-none"
       ></div>
 
-      <!-- Hero section: relative, h-screen, transparent -->
-      <section id="beranda" class="relative h-screen w-full bg-transparent">
-        <!-- Content wrapper: relative, h-full, flex flex-col -->
-        <div id="content-wrapper" class="relative h-full flex flex-col">
-          <!-- Navigation Bar: Max width for 1440x1024 desktop, responsive spacing for tablet and mobile -->
-          <header id="header-nav" class="w-full shrink-0 relative z-30">
+      <!-- Navigation Bar: Max width for 1440x1024 desktop, responsive spacing for tablet and mobile -->
+      <header id="header-nav" class="w-full shrink-0 relative z-30">
             <nav class="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-6 lg:px-8 xl:px-12 py-4 md:py-5 lg:py-6 xl:py-8 flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
-              <!-- Brand Logo: "Travect." with the logo typography provided -->
+              <!-- Brand Logo: Travect SVG logo -->
               <div class="flex items-center shrink-0">
                 <a
                   href="#beranda"
                   id="brand-logo"
-                  class="inline-flex items-baseline select-none focus:outline-hidden group"
+                  class="inline-flex items-center select-none focus:outline-hidden group"
                   aria-label="Travect Home"
                 >
-                  <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl md:text-2xl xl:text-3xl group-hover:opacity-90 transition-colors">
-                    Travect
-                  </span>
-                  <span class="font-serif-logo font-bold text-neutral-900 text-xl md:text-2xl xl:text-3xl">.</span>
+                  <img
+                    src="/travect0.svg"
+                    alt="Travect"
+                    class="h-7 md:h-8 xl:h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
+                  />
                 </a>
               </div>
 
@@ -203,13 +201,20 @@
             </div>
           </header>
 
-          <!-- Main content area: flex-1, flex items-center justify-center -->
-          <main id="main-content" class="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12">
-            <!-- Hero Content (optically balanced for 1440x1024 desktop and elevated for mobile) -->
-            <div
-              id="hero-content"
-              class="text-center max-w-4xl xl:max-w-5xl mx-auto -mt-36 sm:-mt-44 md:-mt-48 lg:-mt-52 xl:-mt-56 select-none"
-            >
+      <!-- ============================================================= -->
+      <!-- VIEW 1: PAGE BERANDA (HOMEPAGE)                               -->
+      <!-- ============================================================= -->
+      <div id="page-beranda" class="page-view flex flex-col w-full">
+        <!-- Hero section: relative, min-h-[calc(100vh-90px)], transparent -->
+        <section id="beranda" class="relative min-h-[calc(100vh-90px)] w-full bg-transparent flex flex-col justify-center">
+          <div id="content-wrapper" class="relative flex-1 flex flex-col justify-center">
+            <!-- Main content area: flex-1, flex items-center justify-center -->
+            <main id="main-content" class="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12 py-10 md:py-16">
+              <!-- Hero Content (optically balanced for desktop and elevated for mobile) -->
+              <div
+                id="hero-content"
+                class="text-center max-w-4xl xl:max-w-5xl mx-auto select-none"
+              >
               <!-- Main Headings: Libertinus Sans with clean drop shadow for clear legibility over video -->
               <h1
                 id="hero-title"
@@ -546,15 +551,9 @@
           <!-- Section Header with Title & Live Auto-Scroll Status Badge -->
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5 lg:mb-6" data-aos="fade-up">
             <div class="bg-white/85 backdrop-blur-md py-4 sm:py-5 px-5 sm:px-7 rounded-3xl shadow-md border border-white/60 max-w-2xl">
-              <div class="flex items-center gap-2 mb-1">
-                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500">
-                  Cerita Penjelajah
-                </span>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-semibold border border-emerald-200/60">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Auto-Scroll
-                </span>
-              </div>
+              <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1">
+                Testimoni
+              </span>
               <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-[32px] font-bold tracking-tight text-neutral-900 leading-[1.2]">
                 Kata Mereka yang Berangkat Bersama Travect
               </h2>
@@ -593,10 +592,11 @@
 
           <div
             id="testimonial-scroll-container"
-            class="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth px-6 sm:px-8 lg:px-12 py-2 cursor-grab active:cursor-grabbing select-none"
+            data-lenis-prevent
+            class="testimonial-snap-container flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory scroll-pl-6 sm:scroll-pl-8 lg:scroll-pl-12 px-6 sm:px-8 lg:px-12 py-3 cursor-grab active:cursor-grabbing select-none overscroll-x-contain"
           >
             <!-- Card 1 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -626,7 +626,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -656,7 +656,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -686,7 +686,7 @@
             </div>
 
             <!-- Card 4 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -716,7 +716,7 @@
             </div>
 
             <!-- Card 5 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -746,7 +746,7 @@
             </div>
 
             <!-- Card 6 -->
-            <div class="testimoni-card w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
+            <div class="testimoni-card snap-start w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 bg-white/90 backdrop-blur-md rounded-3xl p-4.5 sm:p-5.5 border border-white/60 shadow-lg flex flex-col justify-between hover:bg-white hover:shadow-xl transition-all duration-300 group">
               <div>
                 <div class="flex items-center justify-between mb-2.5">
                   <div class="flex items-center gap-1 text-amber-400 text-xs">
@@ -775,6 +775,9 @@
               </div>
             </div>
           </div>
+
+          <!-- Testimonial Pagination Indicators -->
+          <div id="testimonial-dots-container" class="flex items-center justify-center gap-1.5 mt-3.5" aria-label="Testimonial Navigation Dots"></div>
         </div>
       </section>
 
@@ -816,17 +819,270 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <!-- /#page-beranda -->
 
-      <!-- 4. FOOTER -->
+      <!-- ================================================================= -->
+      <!-- VIEW 2: PAGE TENTANG (ABOUT TRAVECT)                              -->
+      <!-- ================================================================= -->
+      <div id="page-tentang" class="page-view hidden flex flex-col w-full">
+        <!-- Hero Section: Pure transparent background showing the airplane video! -->
+        <section id="tentang-hero" class="relative min-h-[85vh] sm:min-h-[88vh] lg:min-h-[92vh] w-full bg-transparent flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 text-center pt-20 sm:pt-24 md:pt-28 pb-24 sm:pb-32">
+          <div class="max-w-4xl mx-auto flex flex-col items-center select-none" data-aos="fade-up" data-aos-duration="750">
+            <!-- Display Title -->
+            <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl xl:text-[76px] font-bold tracking-tight text-neutral-900 leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
+              Tentang Kami
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-sm sm:text-lg md:text-xl text-neutral-800 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-xs mb-8">
+              Travect lahir dari keyakinan bahwa merencanakan momen paling berharga dalam hidup tidak boleh dibebani rute membingungkan, ulasan palsu, atau biaya siluman. Kami mengembalikan rasa takjub di setiap jengkal perjalanan Anda.
+            </p>
+
+            <!-- Metric Strip in Hero -->
+            <div class="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-white/80 shadow-lg mb-8">
+              <div class="p-2 sm:p-3 text-center">
+                <div class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900">45+</div>
+                <div class="text-[11px] sm:text-xs text-neutral-600 font-medium mt-0.5">Destinasi Teruji</div>
+              </div>
+              <div class="p-2 sm:p-3 text-center border-l border-neutral-200/60">
+                <div class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900">100%</div>
+                <div class="text-[11px] sm:text-xs text-neutral-600 font-medium mt-0.5">Pemandu Resmi</div>
+              </div>
+              <div class="p-2 sm:p-3 text-center border-l border-neutral-200/60">
+                <div class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900">0 Biaya</div>
+                <div class="text-[11px] sm:text-xs text-neutral-600 font-medium mt-0.5">Tanpa Siluman</div>
+              </div>
+              <div class="p-2 sm:p-3 text-center border-l border-neutral-200/60">
+                <div class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900">4.98 ★</div>
+                <div class="text-[11px] sm:text-xs text-neutral-600 font-medium mt-0.5">Rating Traveler</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- WHITE OVERLAY SECTION: Seamlessly covers the airplane video!     -->
+        <!-- As user scrolls down, this solid white surface completely covers -->
+        <!-- the airplane video background, giving a pure, elegant canvas.    -->
+        <!-- =============================================================== -->
+        <section id="tentang-white-overlay" class="relative z-20 bg-white text-neutral-900 rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.18)] border-t border-neutral-100 -mt-10 sm:-mt-14 pt-16 sm:pt-24 lg:pt-28 pb-20 sm:pb-28">
+          <div class="max-w-[1240px] mx-auto px-6 sm:px-8 lg:px-12">
+            
+            <!-- 1. KISAH AWAL MULA -->
+            <div class="max-w-3xl mb-20 sm:mb-28" data-aos="fade-up">
+              <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-2">
+                Bab I • Asal Mula
+              </span>
+              <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.18] mb-5">
+                Bagaimana Permulaan Kami
+              </h2>
+              <div class="space-y-4 text-xs sm:text-sm md:text-base text-neutral-700 leading-relaxed font-normal">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+                <p>
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio, et feugiat tellus malesuada sed. Mauris feugiat nisi non justo aliquam ultrices. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.
+                </p>
+                <p>
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam scelerisque, magna nec sodales imperdiet, diam ipsum blandit justo, quis finibus lorem est id eros. Suspendisse potenti. Integer vitae dapibus felis, eu elementum dolor.
+                </p>
+              </div>
+            </div>
+
+            <!-- 2. TIGA PILAR FUNDAMENTAL KAMI (CORE VALUES) -->
+            <div class="mb-20 sm:mb-28" data-aos="fade-up">
+              <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-2">
+                  Bab II • Prinsip Kami
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.18] mb-3">
+                  Tiga Kompas Moral yang Tidak Pernah Kami Khianati
+                </h2>
+                <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                  Setiap keputusan, kemitraan, dan fitur produk di Travect berpijak pada tiga pilar utama berikut.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Pilar 1 -->
+                <div class="bg-neutral-50 rounded-3xl p-6 sm:p-8 border border-neutral-200/70 hover:bg-neutral-100/80 transition-colors flex flex-col justify-between group">
+                  <div>
+                    <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center text-lg mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                      <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-500">Pilar 01</span>
+                    <h3 class="font-heading text-lg sm:text-xl font-bold text-neutral-900 mt-1 mb-3">
+                      Kurasi Nyata oleh Manusia, Bukan Algoritma
+                    </h3>
+                    <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                      Kami menolak sistem scraping otomatis. Setiap vila butik, rute pendakian, kapal pinisi, dan tempat peristirahatan telah diinjak dan diuji langsung oleh tim kurator profesional Travect.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="bg-neutral-50 rounded-3xl p-6 sm:p-8 border border-neutral-200/70 hover:bg-neutral-100/80 transition-colors flex flex-col justify-between group">
+                  <div>
+                    <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center text-lg mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                      <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-500">Pilar 02</span>
+                    <h3 class="font-heading text-lg sm:text-xl font-bold text-neutral-900 mt-1 mb-3">
+                      Kejujuran Radikal & Bebas Biaya Siluman
+                    </h3>
+                    <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                      Harga yang tertera di layar Anda adalah harga final hingga kunci kamar diserahkan ke tangan Anda. Sudah mencakup pajak daerah, kelaikan kapal, dan asuransi perjalanan tanpa tanda bintang tersembunyi.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="bg-neutral-50 rounded-3xl p-6 sm:p-8 border border-neutral-200/70 hover:bg-neutral-100/80 transition-colors flex flex-col justify-between group">
+                  <div>
+                    <div class="w-12 h-12 rounded-2xl bg-neutral-900 text-white flex items-center justify-center text-lg mb-5 shadow-sm group-hover:scale-105 transition-transform">
+                      <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-500">Pilar 03</span>
+                    <h3 class="font-heading text-lg sm:text-xl font-bold text-neutral-900 mt-1 mb-3">
+                      Menghargai Alam & Komunitas Lokal
+                    </h3>
+                    <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                      Pariwisata sejati harus menyejahterakan warga asli. Travect bermitra langsung dengan kapten lokal dan pengrajin setempat, serta mendonasikan sebagian keuntungan untuk pelestarian terumbu karang.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. PROSES KURASI KAMI (THE 4-STEP CURATION PROCESS) -->
+            <div class="mb-20 sm:mb-28" data-aos="fade-up">
+              <div class="max-w-2xl mb-10 sm:mb-12">
+                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-2">
+                  Bab III • Standar Kerja
+                </span>
+                <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.18] mb-3">
+                  Bagaimana Kami Memastikan Setiap Destinasi Sempurna?
+                </h2>
+                <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                  Sebelum sebuah pengalaman tampil di Travect, destinasi tersebut harus melewati empat lapis verifikasi ketat.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Step 1 -->
+                <div class="p-6 rounded-3xl bg-neutral-50 border border-neutral-200/60 relative">
+                  <span class="text-2xl font-bold text-neutral-300 font-heading block mb-2">01</span>
+                  <h4 class="font-heading text-base font-bold text-neutral-900 mb-1.5">Scouting Misterius</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Tim kurator memesan sebagai tamu biasa tanpa mengumumkan identitas untuk menilai keramahan, kebersihan, dan kenyamanan tanpa rekayasa.
+                  </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="p-6 rounded-3xl bg-neutral-50 border border-neutral-200/60 relative">
+                  <span class="text-2xl font-bold text-neutral-300 font-heading block mb-2">02</span>
+                  <h4 class="font-heading text-base font-bold text-neutral-900 mb-1.5">Audit Keselamatan</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Pemeriksaan lisensi nakhoda, kelaikan jaket pelampung kapal, rute darurat medis, dan sertifikasi pemandu resmi berstandar nasional.
+                  </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="p-6 rounded-3xl bg-neutral-50 border border-neutral-200/60 relative">
+                  <span class="text-2xl font-bold text-neutral-300 font-heading block mb-2">03</span>
+                  <h4 class="font-heading text-base font-bold text-neutral-900 mb-1.5">Sinkronisasi Digital</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Seluruh tiket pesawat, voucher vila, dan rute perjalanan terintegrasi dalam satu jadwal yang dapat diakses secara offline di ponsel Anda.
+                  </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="p-6 rounded-3xl bg-neutral-50 border border-neutral-200/60 relative">
+                  <span class="text-2xl font-bold text-neutral-300 font-heading block mb-2">04</span>
+                  <h4 class="font-heading text-base font-bold text-neutral-900 mb-1.5">Concierge Siaga 24/7</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Saat Anda sedang berada di pelosok atau luar negeri, tim concierge manusia kami selalu siaga mendampingi jika cuaca buruk atau butuh perubahan jadwal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. MANIFESTO PENJELAJAH (EDITORIAL QUOTE CARD) -->
+            <div class="mb-20 sm:mb-28" data-aos="zoom-in">
+              <div class="bg-neutral-900 text-white rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl border border-neutral-800 text-center">
+                <!-- Subtle glow effects -->
+                <div class="absolute -top-24 -left-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+                <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-3xl mx-auto">
+                  <i class="fa-solid fa-quote-left text-3xl sm:text-4xl text-neutral-600 mb-6 block"></i>
+                  <blockquote class="font-heading text-xl sm:text-2xl md:text-3xl font-bold leading-relaxed tracking-tight text-white mb-6">
+                    "Bagi kami, bepergian bukan soal mengumpulkan cap paspor sebanyak mungkin untuk dipamerkan. Bepergian adalah tentang mengosongkan cangkir pikiran, bernapas dalam ritme alam baru, dan pulang sebagai manusia yang lebih kaya jiwa."
+                  </blockquote>
+                  <div class="flex items-center justify-center gap-3">
+                    <img
+                      src="/travect0.svg"
+                      alt="Travect"
+                      class="h-6 w-auto brightness-0 invert opacity-80"
+                    />
+                    <span class="text-neutral-400 text-xs font-medium tracking-wide">
+                      — Dewan Kurator & Tim Penjelajah Travect
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. CALL TO ACTION: MULAI PETUALANGAN ANDA -->
+            <div class="text-center max-w-2xl mx-auto" data-aos="fade-up">
+              <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-2">
+                Langkah Berikutnya
+              </span>
+              <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-4">
+                Siap Menjelajah Bersama Standar Baru?
+              </h2>
+              <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-8">
+                Temukan kurasi destinasi pilihan kami sekarang atau diskusikan impian liburan Anda bersama tim concierge berpengalaman Travect.
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+                <button
+                  type="button"
+                  id="tentang-btn-jelajah"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-neutral-900 text-white font-semibold text-xs sm:text-sm rounded-full hover:bg-black transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-arrow-left text-xs"></i>
+                  <span>Jelajahi Destinasi di Beranda</span>
+                </button>
+                <button
+                  type="button"
+                  id="tentang-btn-konsultasi"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-neutral-100 text-neutral-900 border border-neutral-300 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-200 transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-headset text-xs"></i>
+                  <span>Konsultasi Rencana Gratis</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+      <!-- /#page-tentang -->
       <footer id="main-footer" class="bg-white/95 backdrop-blur-md border-t border-white/40 py-8 sm:py-9 lg:py-10 text-neutral-600 text-sm shadow-2xl">
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-6">
             <!-- Brand & Bio -->
             <div class="md:col-span-4">
-              <div class="inline-flex items-baseline select-none mb-2">
-                <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl md:text-2xl">Travect</span>
-                <span class="font-serif-logo font-bold text-neutral-900 text-xl md:text-2xl">.</span>
+              <div class="inline-flex items-center select-none mb-3">
+                <a href="#beranda" class="inline-block" aria-label="Travect Home">
+                  <img
+                    src="/travect0.svg"
+                    alt="Travect"
+                    class="h-6 md:h-7 w-auto object-contain hover:opacity-85 transition-opacity"
+                  />
+                </a>
               </div>
               <p class="text-xs sm:text-sm text-neutral-500 leading-relaxed max-w-sm mb-3.5">
                 Platform kurasi perjalanan modern untuk mencari, membandingkan, dan memesan destinasi favorit dengan mudah, cepat, dan transparan.
@@ -852,6 +1108,7 @@
               <h4 class="font-heading font-bold text-neutral-900 text-xs sm:text-sm mb-2">Navigasi</h4>
               <ul class="space-y-1 text-xs">
                 <li><a href="#beranda" class="text-neutral-500 hover:text-neutral-900 transition-colors">Beranda</a></li>
+                <li><button type="button" class="footer-tentang-btn text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer text-left">Tentang Travect</button></li>
                 <li><a href="#kenapa-travect" class="text-neutral-500 hover:text-neutral-900 transition-colors">Kenapa Travect</a></li>
                 <li><a href="#testimoni" class="text-neutral-500 hover:text-neutral-900 transition-colors">Testimoni</a></li>
                 <li><button type="button" class="footer-booking-btn text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer text-left">Pesan Tiket</button></li>
@@ -915,9 +1172,12 @@
           </button>
 
           <div class="mb-6">
-            <div class="inline-flex items-baseline select-none">
-              <span class="font-serif-logo font-bold tracking-tight text-neutral-900 text-xl">Travect</span>
-              <span class="font-serif-logo font-bold text-neutral-900 text-xl">.</span>
+            <div class="inline-flex items-center select-none mb-2">
+              <img
+                src="/travect0.svg"
+                alt="Travect"
+                class="h-6 w-auto object-contain"
+              />
             </div>
             <h2 id="auth-modal-title" class="font-heading text-2xl font-bold text-gray-900 mt-3">
               Selamat Datang Kembali

@@ -76,6 +76,20 @@ h1, h2, h3, .font-heading {
   z-index: 1;
 }
 
+/* Enhanced Scroll Snapping for Testimonials */
+#testimonial-scroll-container {
+  -webkit-overflow-scrolling: touch;
+}
+
+#testimonial-scroll-container.is-snapping {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+#testimonial-scroll-container > .testimoni-card {
+  scroll-snap-align: start;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

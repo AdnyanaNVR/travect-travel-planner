@@ -212,55 +212,193 @@ function initApp() {
     }
   });
 
-  // Navigation tab selection (desktop & mobile)
-  function setActiveNavTab(tabName) {
-    // Desktop tabs
-    $('.nav-tab-btn').each(function () {
-      const $btn = $(this);
-      if ($btn.data('tab') === tabName) {
-        $btn
-          .removeClass('text-gray-400 hover:text-gray-800')
-          .addClass('bg-[#2b2b2b] text-white shadow-xs');
-      } else {
-        $btn
-          .removeClass('bg-[#2b2b2b] text-white shadow-xs')
-          .addClass('text-gray-400 hover:text-gray-800');
-      }
-    });
+  // Page Navigation State
+  let currentPage = 'Beranda';
 
-    // Mobile tabs
-    $('.mobile-nav-tab-btn').each(function () {
-      const $btn = $(this);
-      if ($btn.data('tab') === tabName) {
-        $btn
-          .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
-          .addClass('bg-neutral-900 text-white');
-      } else {
-        $btn
-          .removeClass('bg-neutral-900 text-white')
-          .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
-      }
-    });
+  function navigateToPage(pageName, scrollToTop = true) {
+    currentPage = pageName;
+    if (pageName === 'Tentang') {
+      $('#page-beranda').addClass('hidden');
+      $('#page-tentang').removeClass('hidden');
 
-    // Handle modals for interactive tabs
-    if (tabName === 'Booking') {
-      openInfoModal('booking');
-    } else if (tabName === 'Tentang') {
-      openInfoModal('tentang');
-    } else if (tabName === 'Credits') {
-      openInfoModal('credits');
+      // Update Nav Buttons
+      $('.nav-tab-btn').each(function () {
+        const $btn = $(this);
+        if ($btn.data('tab') === 'Tentang') {
+          $btn
+            .removeClass('text-gray-400 hover:text-gray-800')
+            .addClass('bg-[#2b2b2b] text-white shadow-xs');
+        } else {
+          $btn
+            .removeClass('bg-[#2b2b2b] text-white shadow-xs')
+            .addClass('text-gray-400 hover:text-gray-800');
+        }
+      });
+
+      $('.mobile-nav-tab-btn').each(function () {
+        const $btn = $(this);
+        if ($btn.data('tab') === 'Tentang') {
+          $btn
+            .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
+            .addClass('bg-neutral-900 text-white');
+        } else {
+          $btn
+            .removeClass('bg-neutral-900 text-white')
+            .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
+        }
+      });
+
+      if (history.pushState) {
+        history.pushState(null, '', '#tentang');
+      }
+
+      if (scrollToTop) {
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
+    } else {
+      $('#page-tentang').addClass('hidden');
+      $('#page-beranda').removeClass('hidden');
+
+      // Update Nav Buttons
+      $('.nav-tab-btn').each(function () {
+        const $btn = $(this);
+        if ($btn.data('tab') === 'Beranda') {
+          $btn
+            .removeClass('text-gray-400 hover:text-gray-800')
+            .addClass('bg-[#2b2b2b] text-white shadow-xs');
+        } else {
+          $btn
+            .removeClass('bg-[#2b2b2b] text-white shadow-xs')
+            .addClass('text-gray-400 hover:text-gray-800');
+        }
+      });
+
+      $('.mobile-nav-tab-btn').each(function () {
+        const $btn = $(this);
+        if ($btn.data('tab') === 'Beranda') {
+          $btn
+            .removeClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900')
+            .addClass('bg-neutral-900 text-white');
+        } else {
+          $btn
+            .removeClass('bg-neutral-900 text-white')
+            .addClass('text-gray-600 hover:bg-gray-50 hover:text-gray-900');
+        }
+      });
+
+      if (history.pushState) {
+        history.pushState(null, '', '#beranda');
+      }
+
+      if (scrollToTop) {
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
+    }
+
+    if (typeof AOS !== 'undefined') {
+      setTimeout(() => AOS.refresh(), 80);
     }
   }
 
+  // Navigation tab click handler
   $('.nav-tab-btn, .mobile-nav-tab-btn').on('click', function () {
     const tabName = $(this).data('tab');
-    setActiveNavTab(tabName);
+    if (tabName === 'Beranda') {
+      navigateToPage('Beranda');
+    } else if (tabName === 'Tentang') {
+      navigateToPage('Tentang');
+    } else if (tabName === 'Booking') {
+      openInfoModal('booking');
+    } else if (tabName === 'Credits') {
+      openInfoModal('credits');
+    }
+
     if (isMobileMenuOpen) {
       $mobileMenu.fadeOut(150, () => {
         $mobileMenu.addClass('hidden');
       });
       $menuIcon.removeClass('fa-xmark').addClass('fa-bars');
       isMobileMenuOpen = false;
+    }
+  });
+
+  // Direct brand logo clicks
+  $('#brand-logo').on('click', (e) => {
+    e.preventDefault();
+    navigateToPage('Beranda');
+  });
+
+  // Footer Tentang button
+  $(document).on('click', '.footer-tentang-btn', (e) => {
+    e.preventDefault();
+    navigateToPage('Tentang');
+  });
+
+  // Tentang page interactive buttons
+  $('#tentang-btn-jelajah').on('click', () => {
+    navigateToPage('Beranda');
+    setTimeout(() => {
+      const el = document.getElementById('kenapa-travect');
+      if (el) {
+        if (lenis) {
+          lenis.scrollTo(el);
+        } else {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, 120);
+  });
+
+  $('#tentang-btn-konsultasi').on('click', () => {
+    openInfoModal('booking');
+  });
+
+  // Handle cross-page hash links for Beranda sections
+  $('a[href^="#"]').on('click', function (e) {
+    const targetHash = $(this).attr('href');
+    if (!targetHash) return;
+
+    if (targetHash === '#beranda') {
+      e.preventDefault();
+      navigateToPage('Beranda');
+    } else if (targetHash === '#kenapa-travect' || targetHash === '#testimoni' || targetHash === '#destinasi') {
+      if (currentPage === 'Tentang') {
+        e.preventDefault();
+        navigateToPage('Beranda', false);
+        setTimeout(() => {
+          const targetEl = document.querySelector(targetHash);
+          if (targetEl) {
+            if (lenis) {
+              lenis.scrollTo(targetEl);
+            } else {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 120);
+      }
+    }
+  });
+
+  // Hash change / initial load check
+  if (window.location.hash === '#tentang') {
+    navigateToPage('Tentang');
+  } else {
+    navigateToPage('Beranda', false);
+  }
+
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#tentang') {
+      navigateToPage('Tentang');
+    } else if (window.location.hash === '#beranda' && currentPage !== 'Beranda') {
+      navigateToPage('Beranda');
     }
   });
 
@@ -526,126 +664,276 @@ function initApp() {
   });
 
   // ==========================================
-  // SIDE-SCROLLABLE AUTO-SCROLL TESTIMONIALS
+  // SIDE-SCROLLABLE AUTO-SCROLL WITH INFINITE WRAP & SNAP
   // ==========================================
   const $testimonialContainer = $('#testimonial-scroll-container');
   const testimonialContainer = $testimonialContainer[0];
   const $testiPrev = $('#testimonial-scroll-prev');
   const $testiNext = $('#testimonial-scroll-next');
+  const $dotsContainer = $('#testimonial-dots-container');
 
   if (testimonialContainer) {
-    // Clone cards for seamless looping effect
-    const originalCards = $testimonialContainer.children().toArray();
-    originalCards.forEach((card) => {
-      const clone = $(card).clone(true);
-      $testimonialContainer.append(clone);
+    // Clone original cards to create seamless infinite loop buffer
+    const $originalCards = $testimonialContainer.children('.testimoni-card');
+    const originalCount = $originalCards.length;
+
+    $originalCards.each(function () {
+      $testimonialContainer.append($(this).clone(true));
     });
 
-    let autoScrollSpeed = 0.75; // pixels per frame
-    let isAutoScrollPaused = false;
+    let isUserInteracting = false;
+    let isDragging = false;
+    let resumeTimeout = null;
     let autoScrollRaf = null;
+    const autoScrollSpeed = 0.65; // pixels per frame for elegant reading speed
 
-    function stepAutoScroll() {
-      if (!isAutoScrollPaused && testimonialContainer) {
-        testimonialContainer.scrollLeft += autoScrollSpeed;
-
-        // Reset scroll position when reaching half of the scrollWidth (where duplicated items begin)
-        const halfWidth = testimonialContainer.scrollWidth / 2;
-        if (testimonialContainer.scrollLeft >= halfWidth) {
-          testimonialContainer.scrollLeft -= halfWidth;
-        } else if (testimonialContainer.scrollLeft <= 0) {
-          testimonialContainer.scrollLeft += halfWidth;
-        }
-      }
-      autoScrollRaf = requestAnimationFrame(stepAutoScroll);
+    function getCardSnapDistance() {
+      const allCards = testimonialContainer.querySelectorAll('.testimoni-card');
+      if (allCards.length < 2) return 320;
+      const first = allCards[0].getBoundingClientRect();
+      const second = allCards[1].getBoundingClientRect();
+      return Math.round(second.left - first.left) || 320;
     }
 
-    // Start auto scroll
-    autoScrollRaf = requestAnimationFrame(stepAutoScroll);
+    function getHalfWidth() {
+      return testimonialContainer.scrollWidth / 2;
+    }
 
-    // Pause on hover
+    // Wrap scroll position seamlessly at both ends
+    function checkInfiniteWrap() {
+      const halfWidth = getHalfWidth();
+      if (halfWidth <= 0) return;
+      if (testimonialContainer.scrollLeft >= halfWidth) {
+        testimonialContainer.scrollLeft -= halfWidth;
+      } else if (testimonialContainer.scrollLeft <= 0) {
+        testimonialContainer.scrollLeft += halfWidth;
+      }
+    }
+
+    // Generate pagination dots for the original items
+    if ($dotsContainer.length > 0 && originalCount > 0) {
+      $dotsContainer.empty();
+      for (let i = 0; i < originalCount; i++) {
+        const $dot = $(`
+          <button
+            type="button"
+            class="testi-dot transition-all duration-300 rounded-full h-2 ${i === 0 ? 'w-6 bg-neutral-900' : 'w-2 bg-neutral-300 hover:bg-neutral-400'} cursor-pointer focus:outline-hidden"
+            data-index="${i}"
+            aria-label="Testimoni ${i + 1}"
+          ></button>
+        `);
+        $dotsContainer.append($dot);
+      }
+
+      $dotsContainer.on('click', '.testi-dot', function () {
+        const targetIdx = parseInt($(this).data('index'), 10);
+        isUserInteracting = true;
+        scrollToDotIndex(targetIdx);
+        scheduleResumeAutoScroll(3500);
+      });
+    }
+
+    function updateDots(activeIdx) {
+      if (!$dotsContainer.length) return;
+      const normalizedIdx = ((activeIdx % originalCount) + originalCount) % originalCount;
+      $dotsContainer.find('.testi-dot').each(function (i) {
+        if (i === normalizedIdx) {
+          $(this).removeClass('w-2 bg-neutral-300 bg-neutral-400').addClass('w-6 bg-neutral-900');
+        } else {
+          $(this).removeClass('w-6 bg-neutral-900').addClass('w-2 bg-neutral-300');
+        }
+      });
+    }
+
+    function scrollToDotIndex(targetIdx) {
+      const snapDist = getCardSnapDistance();
+      const halfWidth = getHalfWidth();
+      checkInfiniteWrap();
+
+      const currentIdx = Math.round(testimonialContainer.scrollLeft / snapDist);
+      const currentNormalized = ((currentIdx % originalCount) + originalCount) % originalCount;
+      let diff = targetIdx - currentNormalized;
+
+      // Find shortest path in loop
+      if (diff > originalCount / 2) diff -= originalCount;
+      if (diff < -originalCount / 2) diff += originalCount;
+
+      const targetScroll = testimonialContainer.scrollLeft + diff * snapDist;
+      testimonialContainer.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+      updateDots(targetIdx);
+    }
+
+    function scheduleResumeAutoScroll(delay = 3000) {
+      if (resumeTimeout) clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        if (!isDragging) {
+          isUserInteracting = false;
+        }
+      }, delay);
+    }
+
+    // Continuous Animation Frame Auto-Scroll Loop
+    function runAutoScroll() {
+      if (!isUserInteracting && !isDragging && document.visibilityState === 'visible') {
+        testimonialContainer.scrollLeft += autoScrollSpeed;
+        checkInfiniteWrap();
+
+        const snapDist = getCardSnapDistance();
+        if (snapDist > 0) {
+          const rawIdx = Math.round(testimonialContainer.scrollLeft / snapDist);
+          updateDots(rawIdx);
+        }
+      }
+      autoScrollRaf = requestAnimationFrame(runAutoScroll);
+    }
+
+    // Start continuous auto-scroll loop
+    autoScrollRaf = requestAnimationFrame(runAutoScroll);
+
+    // Hover pauses auto-scroll and allows inspection
     $testimonialContainer.on('mouseenter', () => {
-      isAutoScrollPaused = true;
+      isUserInteracting = true;
+      if (resumeTimeout) clearTimeout(resumeTimeout);
     });
 
     $testimonialContainer.on('mouseleave', () => {
       if (!isDragging) {
-        isAutoScrollPaused = false;
+        scheduleResumeAutoScroll(1500);
       }
     });
 
-    // Manual navigation buttons
+    // Handle manual scroll/wheel
+    testimonialContainer.addEventListener('scroll', () => {
+      if (isUserInteracting) {
+        checkInfiniteWrap();
+        const snapDist = getCardSnapDistance();
+        if (snapDist > 0) {
+          const rawIdx = Math.round(testimonialContainer.scrollLeft / snapDist);
+          updateDots(rawIdx);
+        }
+      }
+    }, { passive: true });
+
+    testimonialContainer.addEventListener('wheel', () => {
+      isUserInteracting = true;
+      scheduleResumeAutoScroll(3500);
+    }, { passive: true });
+
+    // Arrow Controls with seamless wrap navigation
     $testiPrev.on('click', () => {
-      isAutoScrollPaused = true;
-      const scrollDistance = Math.min(420, testimonialContainer.clientWidth * 0.8);
-      testimonialContainer.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
-      setTimeout(() => {
-        isAutoScrollPaused = false;
-      }, 3000);
+      isUserInteracting = true;
+      checkInfiniteWrap();
+      const snapDist = getCardSnapDistance();
+      testimonialContainer.scrollBy({ left: -snapDist, behavior: 'smooth' });
+      scheduleResumeAutoScroll(3500);
     });
 
     $testiNext.on('click', () => {
-      isAutoScrollPaused = true;
-      const scrollDistance = Math.min(420, testimonialContainer.clientWidth * 0.8);
-      testimonialContainer.scrollBy({ left: scrollDistance, behavior: 'smooth' });
-      setTimeout(() => {
-        isAutoScrollPaused = false;
-      }, 3000);
+      isUserInteracting = true;
+      checkInfiniteWrap();
+      const snapDist = getCardSnapDistance();
+      testimonialContainer.scrollBy({ left: snapDist, behavior: 'smooth' });
+      scheduleResumeAutoScroll(3500);
     });
 
-    // Drag to scroll / Touch support
-    let isDragging = false;
+    // Keyboard accessibility navigation
+    testimonialContainer.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        $testiNext.trigger('click');
+      } else if (e.key === 'ArrowLeft') {
+        $testiPrev.trigger('click');
+      }
+    });
+
+    // Drag-to-scroll & Touch Support with seamless loop & snap
     let startX = 0;
-    let startScrollLeft = 0;
-    let resumeTimeout = null;
+    let initialScrollLeft = 0;
+    let dragStartTime = 0;
 
-    const onPointerDown = (pageX) => {
+    const startDrag = (pageX) => {
       isDragging = true;
-      isAutoScrollPaused = true;
-      startX = pageX - testimonialContainer.offsetLeft;
-      startScrollLeft = testimonialContainer.scrollLeft;
+      isUserInteracting = true;
+      startX = pageX;
+      initialScrollLeft = testimonialContainer.scrollLeft;
+      dragStartTime = Date.now();
       if (resumeTimeout) clearTimeout(resumeTimeout);
+      testimonialContainer.style.scrollBehavior = 'auto';
+      testimonialContainer.classList.add('cursor-grabbing');
     };
 
-    const onPointerMove = (pageX) => {
+    const moveDrag = (pageX) => {
       if (!isDragging) return;
-      const x = pageX - testimonialContainer.offsetLeft;
-      const walk = (x - startX) * 1.3;
-      testimonialContainer.scrollLeft = startScrollLeft - walk;
+      const diff = pageX - startX;
+      testimonialContainer.scrollLeft = initialScrollLeft - diff;
+      checkInfiniteWrap();
     };
 
-    const onPointerUp = () => {
+    const endDrag = (pageX) => {
       if (!isDragging) return;
       isDragging = false;
-      resumeTimeout = setTimeout(() => {
-        isAutoScrollPaused = false;
-      }, 2500);
+      testimonialContainer.classList.remove('cursor-grabbing');
+      testimonialContainer.style.scrollBehavior = 'smooth';
+
+      const diff = (pageX || startX) - startX;
+      const duration = Date.now() - dragStartTime;
+      const snapDist = getCardSnapDistance();
+
+      let targetPos = testimonialContainer.scrollLeft;
+      // If quick flick with momentum
+      if (duration < 250 && Math.abs(diff) > 30) {
+        if (diff < 0) {
+          targetPos += snapDist * 0.8;
+        } else {
+          targetPos -= snapDist * 0.8;
+        }
+      }
+
+      const nearestCardIdx = Math.round(targetPos / snapDist);
+      testimonialContainer.scrollTo({
+        left: nearestCardIdx * snapDist,
+        behavior: 'smooth'
+      });
+
+      scheduleResumeAutoScroll(3000);
     };
 
     // Mouse drag events
     $testimonialContainer.on('mousedown', (e) => {
-      onPointerDown(e.pageX);
+      startDrag(e.pageX);
     });
 
     $(window).on('mousemove', (e) => {
-      onPointerMove(e.pageX);
+      if (isDragging) {
+        e.preventDefault();
+        moveDrag(e.pageX);
+      }
     });
 
-    $(window).on('mouseup', () => {
-      onPointerUp();
+    $(window).on('mouseup', (e) => {
+      if (isDragging) {
+        endDrag(e.pageX);
+      }
     });
 
-    // Touch events for mobile
+    // Touch events for mobile/tablet
     testimonialContainer.addEventListener('touchstart', (e) => {
-      onPointerDown(e.touches[0].pageX);
+      if (e.touches && e.touches.length > 0) {
+        startDrag(e.touches[0].pageX);
+      }
     }, { passive: true });
 
     testimonialContainer.addEventListener('touchmove', (e) => {
-      onPointerMove(e.touches[0].pageX);
+      if (isDragging && e.touches && e.touches.length > 0) {
+        moveDrag(e.touches[0].pageX);
+      }
     }, { passive: true });
 
-    testimonialContainer.addEventListener('touchend', () => {
-      onPointerUp();
+    testimonialContainer.addEventListener('touchend', (e) => {
+      const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].pageX : startX;
+      endDrag(endX);
     }, { passive: true });
   }
 }
