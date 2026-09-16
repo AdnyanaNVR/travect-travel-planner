@@ -58,259 +58,259 @@
         class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 z-50 pointer-events-none"
       ></div>
 
-      <!-- Navigation Bar: Max width for 1440x1024 desktop, responsive spacing for tablet and mobile -->
-      <header id="header-nav" class="w-full shrink-0 relative z-30">
-            <nav class="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-6 lg:px-8 xl:px-12 py-4 md:py-5 lg:py-6 xl:py-8 flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
-              <!-- Brand Logo: Travect SVG logo -->
-              <div class="flex items-center shrink-0">
-                <a
-                  href="#beranda"
-                  id="brand-logo"
-                  class="inline-flex items-center select-none focus:outline-hidden group"
-                  aria-label="Travect Home"
-                >
-                  <img
-                    src="/travect0.svg"
-                    alt="Travect"
-                    class="h-7 md:h-8 xl:h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
-                  />
-                </a>
-              </div>
+      <!-- Navigation Bar: Always visible (sticky top-0), fully transparent without white bar -->
+      <header id="header-nav" class="sticky top-0 w-full shrink-0 z-40 bg-transparent">
+        <nav class="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-6 lg:px-8 xl:px-12 py-4 md:py-5 lg:py-6 xl:py-7 flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
+          <!-- Brand Logo: Travect SVG logo -->
+          <div class="flex items-center shrink-0">
+            <a
+              href="javascript:void(0)"
+              id="brand-logo"
+              class="inline-flex items-center select-none focus:outline-hidden group cursor-pointer"
+              aria-label="Travect Home"
+            >
+              <img
+                src="/travect0.svg"
+                alt="Travect"
+                class="h-7 md:h-8 xl:h-9 w-auto object-contain group-hover:opacity-85 transition-opacity"
+              />
+            </a>
+          </div>
 
-              <!-- Desktop & Tablet Menu Items (hidden on mobile): Beranda, Tentang, Booking, Credits -->
-              <div
-                id="desktop-menu"
-                class="hidden md:flex items-center bg-gray-200/50 p-1 lg:p-1.5 rounded-full border border-gray-200/70 shadow-2xs backdrop-blur-xs gap-0.5"
+          <!-- Desktop & Tablet Menu Items (hidden on mobile): Beranda, Tentang, Booking, Credits -->
+          <div
+            id="desktop-menu"
+            class="hidden md:flex items-center bg-gray-200/50 p-1 lg:p-1.5 rounded-full border border-gray-200/70 shadow-2xs backdrop-blur-xs gap-0.5"
+          >
+            <button
+              type="button"
+              data-tab="Beranda"
+              id="nav-item-beranda"
+              class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors bg-[#2b2b2b] text-white shadow-xs cursor-pointer focus:outline-hidden"
+            >
+              Beranda
+            </button>
+            <button
+              type="button"
+              data-tab="Tentang"
+              id="nav-item-tentang"
+              class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+            >
+              Tentang
+            </button>
+            <button
+              type="button"
+              data-tab="Booking"
+              id="nav-item-booking"
+              class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+            >
+              Booking
+            </button>
+            <button
+              type="button"
+              data-tab="Credits"
+              id="nav-item-credits"
+              class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
+            >
+              Credits
+            </button>
+          </div>
+
+          <!-- Desktop & Tablet Auth Buttons -->
+          <div id="desktop-auth-actions" class="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-3 shrink-0">
+            <button
+              type="button"
+              id="btn-masuk-desktop"
+              class="text-xs lg:text-sm font-medium text-gray-800 hover:text-black transition-colors px-2.5 md:px-3 lg:px-4 py-1.5 lg:py-2 focus:outline-hidden cursor-pointer rounded-full"
+            >
+              Masuk
+            </button>
+            <button
+              type="button"
+              id="btn-bergabung-desktop"
+              class="bg-black text-white text-xs lg:text-sm font-medium px-3.5 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer shrink-0"
+            >
+              Bergabung
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <div class="flex md:hidden items-center">
+            <button
+              type="button"
+              id="mobile-menu-btn"
+              class="p-2 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors focus:outline-hidden cursor-pointer"
+              aria-label="Buka menu navigasi"
+            >
+              <i id="menu-icon" class="fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center"></i>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu: absolute floating dropdown over content without pushing elements down -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 z-50 px-6 pt-1 pb-4">
+          <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 p-5 space-y-2">
+            <div class="flex flex-col space-y-1">
+              <button
+                type="button"
+                data-tab="Beranda"
+                class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors bg-neutral-900 text-white cursor-pointer focus:outline-hidden"
               >
-                <button
-                  type="button"
-                  data-tab="Beranda"
-                  id="nav-item-beranda"
-                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors bg-[#2b2b2b] text-white shadow-xs cursor-pointer focus:outline-hidden"
-                >
-                  Beranda
-                </button>
-                <button
-                  type="button"
-                  data-tab="Tentang"
-                  id="nav-item-tentang"
-                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
-                >
-                  Tentang
-                </button>
-                <button
-                  type="button"
-                  data-tab="Booking"
-                  id="nav-item-booking"
-                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
-                >
-                  Booking
-                </button>
-                <button
-                  type="button"
-                  data-tab="Credits"
-                  id="nav-item-credits"
-                  class="nav-tab-btn px-3.5 md:px-4 lg:px-5 xl:px-6 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-colors text-gray-400 hover:text-gray-800 cursor-pointer focus:outline-hidden"
-                >
-                  Credits
-                </button>
-              </div>
-
-              <!-- Desktop & Tablet Auth Buttons -->
-              <div id="desktop-auth-actions" class="hidden md:flex items-center space-x-1.5 md:space-x-2 lg:space-x-3 shrink-0">
-                <button
-                  type="button"
-                  id="btn-masuk-desktop"
-                  class="text-xs lg:text-sm font-medium text-gray-800 hover:text-black transition-colors px-2.5 md:px-3 lg:px-4 py-1.5 lg:py-2 focus:outline-hidden cursor-pointer rounded-full"
-                >
-                  Masuk
-                </button>
-                <button
-                  type="button"
-                  id="btn-bergabung-desktop"
-                  class="bg-black text-white text-xs lg:text-sm font-medium px-3.5 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer shrink-0"
-                >
-                  Bergabung
-                </button>
-              </div>
-
-              <!-- Mobile Hamburger Toggle Button -->
-              <div class="flex md:hidden items-center">
-                <button
-                  type="button"
-                  id="mobile-menu-btn"
-                  class="p-2 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors focus:outline-hidden cursor-pointer"
-                  aria-label="Buka menu navigasi"
-                >
-                  <i id="menu-icon" class="fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center"></i>
-                </button>
-              </div>
-            </nav>
-
-            <!-- Mobile Menu: absolute floating dropdown over content without pushing elements down -->
-            <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 z-50 px-6 pt-1 pb-4">
-              <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 p-5 space-y-2">
-                <div class="flex flex-col space-y-1">
-                  <button
-                    type="button"
-                    data-tab="Beranda"
-                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors bg-neutral-900 text-white cursor-pointer focus:outline-hidden"
-                  >
-                    Beranda
-                  </button>
-                  <button
-                    type="button"
-                    data-tab="Tentang"
-                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
-                  >
-                    Tentang
-                  </button>
-                  <button
-                    type="button"
-                    data-tab="Booking"
-                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
-                  >
-                    Booking
-                  </button>
-                  <button
-                    type="button"
-                    data-tab="Credits"
-                    class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
-                  >
-                    Credits
-                  </button>
-                </div>
-
-                <div class="pt-3 border-t border-gray-100 flex flex-col gap-2">
-                  <button
-                    type="button"
-                    id="btn-masuk-mobile"
-                    class="w-full text-center py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer"
-                  >
-                    Masuk
-                  </button>
-                  <button
-                    type="button"
-                    id="btn-bergabung-mobile"
-                    class="w-full text-center py-2.5 text-sm font-medium bg-black text-white rounded-xl hover:bg-neutral-800 transition-colors shadow-xs cursor-pointer"
-                  >
-                    Bergabung
-                  </button>
-                </div>
-              </div>
+                Beranda
+              </button>
+              <button
+                type="button"
+                data-tab="Tentang"
+                class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+              >
+                Tentang
+              </button>
+              <button
+                type="button"
+                data-tab="Booking"
+                class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+              >
+                Booking
+              </button>
+              <button
+                type="button"
+                data-tab="Credits"
+                class="mobile-nav-tab-btn w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-gray-900 cursor-pointer focus:outline-hidden"
+              >
+                Credits
+              </button>
             </div>
-          </header>
+
+            <div class="pt-3 border-t border-gray-100 flex flex-col gap-2">
+              <button
+                type="button"
+                id="btn-masuk-mobile"
+                class="w-full text-center py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer"
+              >
+                Masuk
+              </button>
+              <button
+                type="button"
+                id="btn-bergabung-mobile"
+                class="w-full text-center py-2.5 text-sm font-medium bg-black text-white rounded-xl hover:bg-neutral-800 transition-colors shadow-xs cursor-pointer"
+              >
+                Bergabung
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
 
       <!-- ============================================================= -->
       <!-- VIEW 1: PAGE BERANDA (HOMEPAGE)                               -->
       <!-- ============================================================= -->
       <div id="page-beranda" class="page-view flex flex-col w-full">
-        <!-- Hero section: relative, min-h-[calc(100vh-90px)], transparent -->
-        <section id="beranda" class="relative min-h-[calc(100vh-90px)] w-full bg-transparent flex flex-col justify-center">
-          <div id="content-wrapper" class="relative flex-1 flex flex-col justify-center">
-            <!-- Main content area: flex-1, flex items-center justify-center -->
-            <main id="main-content" class="flex-1 flex items-center justify-center px-6 sm:px-8 lg:px-12 py-10 md:py-16">
-              <!-- Hero Content (optically balanced for desktop and elevated for mobile) -->
+        <!-- Hero section: Full natural cinematic proportions with text gracefully elevated in upper sky -->
+        <section id="beranda" class="relative min-h-[calc(100vh-80px)] w-full bg-transparent flex flex-col justify-start items-center pt-6 sm:pt-10 md:pt-12 pb-24 sm:pb-32 lg:pb-40">
+          <div id="content-wrapper" class="relative w-full flex-1 flex flex-col items-center justify-center">
+            <!-- Main content area -->
+            <main id="main-content" class="w-full flex items-center justify-center px-6 sm:px-8 lg:px-12">
+              <!-- Hero Content: Gracefully lifted higher into the open sky area, keeping clear runway for airplane video below -->
               <div
                 id="hero-content"
-                class="text-center max-w-4xl xl:max-w-5xl mx-auto select-none"
+                class="text-center max-w-4xl xl:max-w-5xl mx-auto select-none -translate-y-6 sm:-translate-y-10 md:-translate-y-14 lg:-translate-y-18 xl:-translate-y-22"
               >
-              <!-- Main Headings: Libertinus Sans with clean drop shadow for clear legibility over video -->
-              <h1
-                id="hero-title"
-                class="font-heading text-4xl sm:text-6xl md:text-7xl xl:text-[82px] font-bold tracking-tight text-neutral-900 leading-[1.08] drop-shadow-sm"
-              >
-                <span>Your </span>
-                <span class="text-slate-500 font-bold">next </span>
-                <span>great</span>
-                <br />
-                <span class="text-slate-500 font-bold">escape </span>
-                <span>starts here</span>
-              </h1>
-
-              <!-- Subtitle: Montserrat -->
-              <p
-                id="hero-subtitle"
-                class="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl xl:text-2xl text-neutral-800 max-w-2xl xl:max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-xs"
-              >
-                Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit
-              </p>
-
-              <!-- Tombol Khusus Mobile: Style sama persis seperti tombol Bergabung -->
-              <div class="mt-6 flex md:hidden items-center justify-center">
-                <button
-                  type="button"
-                  id="hero-mobile-cta-btn"
-                  class="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer active:scale-95 flex items-center gap-2"
+                <!-- Main Headings: Libertinus Sans with clean drop shadow for clear legibility over video -->
+                <h1
+                  id="hero-title"
+                  class="font-heading text-4xl sm:text-6xl md:text-7xl xl:text-[82px] font-bold tracking-tight text-neutral-900 leading-[1.08] drop-shadow-sm"
                 >
-                  <span>Mulai Perjalanan</span>
-                  <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
+                  <span>Your </span>
+                  <span class="text-slate-500 font-bold">next </span>
+                  <span>great</span>
+                  <br />
+                  <span class="text-slate-500 font-bold">escape </span>
+                  <span>starts here</span>
+                </h1>
+
+                <!-- Subtitle: Montserrat -->
+                <p
+                  id="hero-subtitle"
+                  class="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl xl:text-2xl text-neutral-800 max-w-2xl xl:max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-xs"
+                >
+                  Cari, bandingkan, dan pesan destinasi favoritmu hanya dalam hitungan menit
+                </p>
+
+                <!-- Tombol Khusus Mobile -->
+                <div class="mt-6 flex md:hidden items-center justify-center">
+                  <button
+                    type="button"
+                    id="hero-mobile-cta-btn"
+                    class="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs focus:outline-hidden cursor-pointer active:scale-95 flex items-center gap-2"
+                  >
+                    <span>Mulai Perjalanan</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-          </main>
-        </div>
-      </section>
+            </main>
+          </div>
+        </section>
 
       <!-- 1. KENAPA TRAVECT SECTION -->
       <section
         id="kenapa-travect"
-        class="relative py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 overflow-hidden"
+        class="relative py-14 sm:py-18 md:py-22 lg:py-26 overflow-hidden"
       >
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             <!-- Left Column: Penjelasan rata kiri inside an elegant floating glass card -->
             <div class="lg:col-span-7 text-left" data-aos="fade-up" data-aos-duration="700">
-              <div class="bg-white/90 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-7 border border-white/60 shadow-xl">
-                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1">
+              <div class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/60 shadow-xl">
+                <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1.5">
                   Keunggulan Kami
                 </span>
-                <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-[32px] font-bold tracking-tight text-neutral-900 leading-[1.2] mb-2.5">
+                <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.2] mb-3">
                   Kenapa Memilih Travect untuk Liburan Anda?
                 </h2>
-                <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed max-w-2xl mb-4 font-normal">
+                <p class="text-sm sm:text-base text-neutral-700 leading-relaxed max-w-2xl mb-6 font-normal">
                   Kami mengubah cara Anda merencanakan liburan. Dari kurasi penginapan butik berstandar tinggi hingga transparansi harga tanpa biaya tak terduga, setiap langkah dirancang agar perjalanan Anda tenang, nyaman, dan tak terlupakan.
                 </p>
 
                 <!-- Feature Breakdown Points -->
-                <div class="space-y-2.5 sm:space-y-3">
-                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
-                      <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-4 p-2.5 -mx-2.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-base sm:text-lg font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Kurasi Destinasi & Hotel Terverifikasi
                       </h3>
-                      <p class="text-xs text-neutral-600 leading-relaxed">
+                      <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                         Setiap hotel, vila, dan rute perjalanan melewati inspeksi langsung agar foto dan fasilitas selalu sesuai ekspektasi Anda.
                       </p>
                     </div>
                   </div>
 
-                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
-                      <i class="fa-solid fa-shield-halved text-xs"></i>
+                  <div class="flex items-start gap-4 p-2.5 -mx-2.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-shield-halved text-sm"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-base sm:text-lg font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Transparansi Harga Tanpa Biaya Tersembunyi
                       </h3>
-                      <p class="text-xs text-neutral-600 leading-relaxed">
+                      <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                         Harga yang tertera saat pencarian adalah harga total akhir. Tidak ada biaya admin siluman atau lonjakan mendadak di kasir.
                       </p>
                     </div>
                   </div>
 
-                  <div class="flex items-start gap-3.5 p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
-                    <div class="w-9 h-9 rounded-xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
-                      <i class="fa-solid fa-bolt-lightning text-xs"></i>
+                  <div class="flex items-start gap-4 p-2.5 -mx-2.5 rounded-2xl hover:bg-neutral-100/60 transition-colors group cursor-default">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-neutral-900 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover:bg-black group-hover:scale-105 transition-all duration-300">
+                      <i class="fa-solid fa-bolt-lightning text-sm"></i>
                     </div>
                     <div>
-                      <h3 class="font-heading text-sm sm:text-base font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
+                      <h3 class="font-heading text-base sm:text-lg font-bold text-neutral-900 mb-0.5 group-hover:text-black transition-colors">
                         Pemesanan Instan & Bantuan 24/7
                       </h3>
-                      <p class="text-xs text-neutral-600 leading-relaxed">
+                      <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                         Tiket dan voucher langsung masuk ke ponsel Anda dalam 60 detik, dengan tim concierge personal yang siap siaga setiap saat.
                       </p>
                     </div>
@@ -323,7 +323,7 @@
             <div class="lg:col-span-5 w-full" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
               <div
                 id="destination-carousel-card"
-                class="relative w-full rounded-3xl p-4 sm:p-5 lg:p-5.5 glass-panel shadow-xl overflow-hidden group"
+                class="relative w-full rounded-3xl p-5 sm:p-6 lg:p-6.5 glass-panel shadow-xl overflow-hidden group"
               >
                 <!-- Carousel Header -->
                 <div class="flex items-center justify-between mb-3">
@@ -546,18 +546,18 @@
       </section>
 
       <!-- 2. TESTIMONI SECTION (Side Scrollable with Auto-Scroll & Desktop-only Transparent Arrow Controls) -->
-      <section id="testimoni" class="py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden relative">
+      <section id="testimoni" class="py-14 sm:py-18 md:py-22 lg:py-26 overflow-hidden relative">
         <div class="max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12">
           <!-- Section Header with Title & Live Auto-Scroll Status Badge -->
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5 lg:mb-6" data-aos="fade-up">
-            <div class="bg-white/85 backdrop-blur-md py-4 sm:py-5 px-5 sm:px-7 rounded-3xl shadow-md border border-white/60 max-w-2xl">
-              <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 lg:mb-8" data-aos="fade-up">
+            <div class="bg-white/85 backdrop-blur-md py-5 sm:py-6 px-6 sm:px-8 rounded-3xl shadow-md border border-white/60 max-w-2xl">
+              <span class="inline-block text-[11px] uppercase tracking-widest font-bold text-neutral-500 mb-1.5">
                 Testimoni
               </span>
-              <h2 class="font-heading text-xl sm:text-2xl lg:text-3xl xl:text-[32px] font-bold tracking-tight text-neutral-900 leading-[1.2]">
+              <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.2]">
                 Kata Mereka yang Berangkat Bersama Travect
               </h2>
-              <p class="mt-1.5 text-xs sm:text-sm text-neutral-600 font-normal">
+              <p class="mt-2 text-sm sm:text-base text-neutral-600 font-normal">
                 Ulasan terverifikasi dari pelancong yang menemukan destinasi impian dengan mudah dan transparan.
               </p>
             </div>
@@ -782,36 +782,36 @@
       </section>
 
       <!-- 3. CALL TO ACTION SECTION -->
-      <section id="cta-section" class="py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden">
+      <section id="cta-section" class="py-14 sm:py-18 md:py-22 lg:py-26 overflow-hidden">
         <div class="max-w-[1140px] mx-auto px-6 sm:px-8 lg:px-12 text-center" data-aos="zoom-in" data-aos-duration="700">
-          <div class="bg-neutral-900/95 backdrop-blur-lg text-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-white/10">
+          <div class="bg-neutral-900/95 backdrop-blur-lg text-white rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl border border-white/10">
             <!-- Background aesthetic glows -->
             <div class="absolute -top-24 -right-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-neutral-800 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
             <div class="relative z-10 max-w-2xl mx-auto">
-              <span class="inline-block text-[11px] uppercase tracking-widest font-semibold text-neutral-400 mb-1.5">
+              <span class="inline-block text-[11px] uppercase tracking-widest font-semibold text-neutral-400 mb-2">
                 Mulai Petualangan
               </span>
-              <h2 class="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-[1.2] mb-2.5">
+              <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.2] mb-3 sm:mb-4">
                 Siap Menemukan Destinasi Impian Anda Berikutnya?
               </h2>
-              <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6 max-w-xl mx-auto">
+              <p class="text-sm sm:text-base text-neutral-300 leading-relaxed mb-8 max-w-xl mx-auto">
                 Bergabunglah dengan ribuan penjelajah lainnya. Dapatkan kurasi destinasi pilihan mingguan dan potongan eksklusif untuk pesanan pertama Anda.
               </p>
 
-              <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
                 <button
                   type="button"
                   id="cta-btn-booking"
-                  class="w-full sm:w-auto px-7 py-3 bg-white text-neutral-900 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-100 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-white text-neutral-900 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-100 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
                 >
                   Cari & Pesan Sekarang
                 </button>
                 <button
                   type="button"
                   id="cta-btn-bergabung"
-                  class="w-full sm:w-auto px-7 py-3 bg-neutral-800/90 text-white border border-neutral-700 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
+                  class="w-full sm:w-auto px-8 py-3.5 bg-neutral-800/90 text-white border border-neutral-700 font-semibold text-xs sm:text-sm rounded-full hover:bg-neutral-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer focus:outline-hidden"
                 >
                   Buat Akun Gratis
                 </button>
@@ -819,6 +819,7 @@
             </div>
           </div>
         </div>
+      </section>
       </div>
       <!-- /#page-beranda -->
 
@@ -840,7 +841,7 @@
             </p>
 
             <!-- Metric Strip in Hero -->
-            <div class="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-white/80 shadow-lg mb-8">
+            <div class="w-full max-w-3xl grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-2.5 sm:p-3.5 rounded-2xl bg-white/80 backdrop-blur-md border border-white/80 shadow-lg mb-8">
               <div class="p-2 sm:p-3 text-center">
                 <div class="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900">45+</div>
                 <div class="text-[11px] sm:text-xs text-neutral-600 font-medium mt-0.5">Destinasi Teruji</div>

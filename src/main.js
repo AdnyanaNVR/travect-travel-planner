@@ -12,11 +12,14 @@ if (typeof window !== 'undefined') {
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
+if (window.location.hash === '#beranda') {
+  history.replaceState(null, '', window.location.pathname);
+}
 window.scrollTo(0, 0);
 
 function initApp() {
   // Ensure we start at top of homepage on initial load or reload
-  if (window.location.hash && window.location.hash !== '#beranda') {
+  if (window.location.hash === '#beranda') {
     history.replaceState(null, '', window.location.pathname);
   }
   window.scrollTo(0, 0);
@@ -34,12 +37,25 @@ function initApp() {
       touchMultiplier: 1.5,
     });
 
+    lenis.scrollTo(0, { immediate: true });
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
   }
+
+  // Force scroll to top on window load
+  window.addEventListener('load', () => {
+    if (window.location.hash === '#beranda') {
+      history.replaceState(null, '', window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  });
 
   // Bi-directional Scroll-linked Video Playback:
   // Play forward when scrolling down, play backward (rewind) when scrolling up, pause when stationary.
@@ -291,7 +307,7 @@ function initApp() {
       });
 
       if (history.pushState) {
-        history.pushState(null, '', '#beranda');
+        history.pushState(null, '', window.location.pathname);
       }
 
       if (scrollToTop) {
@@ -304,7 +320,13 @@ function initApp() {
     }
 
     if (typeof AOS !== 'undefined') {
-      setTimeout(() => AOS.refresh(), 80);
+      setTimeout(() => {
+        if (typeof AOS.refreshHard === 'function') {
+          AOS.refreshHard();
+        } else {
+          AOS.refresh();
+        }
+      }, 60);
     }
   }
 
@@ -389,10 +411,18 @@ function initApp() {
 
   // Hash change / initial load check
   if (window.location.hash === '#tentang') {
-    navigateToPage('Tentang');
+    navigateToPage('Tentang', true);
   } else {
-    navigateToPage('Beranda', false);
+    navigateToPage('Beranda', true);
   }
+
+  // Double check scroll is strictly at absolute top
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, 50);
 
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#tentang') {
@@ -513,7 +543,6 @@ function initApp() {
   function closeInfoModal() {
     $infoModal.fadeOut(150, () => {
       $infoModal.addClass('hidden');
-      setActiveNavTab('Beranda');
     });
   }
 
